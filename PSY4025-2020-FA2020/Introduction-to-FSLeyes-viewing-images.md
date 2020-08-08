@@ -48,13 +48,13 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 
 **Terms for talking about anatomy in an image**: <br/>
 *  Hover over these icons and click them on/off to see what they do <br/>
-![slice-view-tool](images/slice-view-tool.png)
+![slice-view-tool](images/Introduction-to-FSLeyes_slice-view-tool.png)
 *  What do the letters on the four sides of each view shown below mean? <br/>
-![slice-view-orthogonal](uploads/63fc84aa9fb0e9b7bc77a0697edafd85/slice-view-orthogonal.png)
+![slice-view-orthogonal](images/Introduction-to-FSLeyes_slice-view-orthogonal.png)
 <br/>
 
 **Adjust contrast:** <br/>
-*  Find this tool in your GUI  ![contrast-button](uploads/245cbe607a21c43791049ee2f2d61e6e/contrast-button.png) 
+*  Find this tool in your GUI  ![contrast-button](images/Introduction-to-FSLeyes_contrast-button.png) 
 *  What happens when you set the max to 2000?  What does this tell you about what the numbers mean?
 *  Now what do you think will happen when you set the max to 50?
 *  Try and let's discuss..
@@ -65,7 +65,7 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 *  Use steps learned from above to add a new image
 *  Add the file named `sub-97_task-flanker_bold.nii.gz`
 *  Place cursor in the brain somewhere and then toggle on/off the functional image using this button: 
-![toggle-eye-fsleyes](uploads/e3ecbf624d08c2d7ae18990f33d6235a/toggle-eye-fsleyes.png)
+![toggle-eye-fsleyes](images/Introduction-to-FSLeyes_toggle-eye-fsleyes.png)
 * Observations
   * How many dimensions are there in the image?
   * What kinds of tissues are the brightest and darkest?
