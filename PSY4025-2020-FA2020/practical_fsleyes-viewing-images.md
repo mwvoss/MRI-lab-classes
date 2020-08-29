@@ -1,8 +1,9 @@
 **By the end of this practical you should be able to:** <br/>
 * [ ] use the terminal to navigate to where your MRI data for this course will be <br/>
 * [ ] open MR images with fsleyes <br/>
-* [ ] distinguish between a structural and functional image and explain key differences in how they were measured <br/>
-* [ ]  use fsleyes to identify what coordinates at the cursor location mean, adjust contrast of the image, and toggle images on/off <br/>
+* [ ] distinguish between structural and functional images in contrast, resolution, and dimensions <br/>
+* [ ] use fsleyes to identify the coordinates and intensity at the cursor location, and toggle images on/off <br/>
+* [ ] view the timeseries of a functional image
 <br/>
 
 **Access FastX** through the remote login: <br>
