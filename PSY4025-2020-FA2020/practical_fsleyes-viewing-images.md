@@ -40,10 +40,13 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 
 **Understanding the T1 image**: <br/>
 * Initial observations: try to answer these questions with your neighbours
-  * How many dimensions are there in the image?
   * What kinds of tissues are the brightest and darkest?
-  * Place your cursor on example spots and try to find their coordinates
-  * Brief primer on anatomy
+  * Place your cursor at different places in the image and see how it affects coordinates shown here:
+  ![image-location-coordinate](images/Introduction-to-FSLeyes_coordinates.png)
+  * In addition to the coordinate location of your cursor, what additional information is being shown here?
+    ![image-location-coordinate-intensity](images/Introduction-to-FSLeyes_coordinates-and-intensity.png)
+  * So, how many dimensions are there in the image?
+  * Brief review on anatomy 
 <br/>
 
 **Terms for talking about anatomy in an image**: <br/>
@@ -53,13 +56,6 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 ![slice-view-orthogonal](images/Introduction-to-FSLeyes_slice-view-orthogonal.png)
 <br/>
 
-**Adjust contrast:** <br/>
-*  Find this tool in your GUI  ![contrast-button](images/Introduction-to-FSLeyes_contrast-button.png) 
-*  What happens when you set the max to 2000?  What does this tell you about what the numbers mean?
-*  Now what do you think will happen when you set the max to 50?
-*  Try and let's discuss..
-*  Reset with the RESET button
-<br/>
 
 **Add a functional image on top of the structural**: <br/>
 *  Use steps learned from above to add a new image
@@ -67,7 +63,11 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 *  Place cursor in the brain somewhere and then toggle on/off the functional image using this button: 
 ![toggle-eye-fsleyes](images/Introduction-to-FSLeyes_toggle-eye-fsleyes.png)
 * Observations
-  * How many dimensions are there in the image?
   * What kinds of tissues are the brightest and darkest?
-  * Place your cursor on example spots and try to find their coordinates
-  * Adjust contrast like you did above, similar or different than T1?
+  * Does the functional image have more or less anatomical detail than the structural T1 image?
+  * Use the menu at the top-left of your screen to view the BOLD timeseries for a voxel: View -> Time Series
+    * Compare time series data inside and outside the brain
+    * Change plotting mode to compare magnitude of signal change in different locations
+  * So, how many dimensions are there in the functional image?
+  * Example with timeseries viewer on:
+  ![fsleyes-timeseries](images/Introduction-to-FSLeyes_time-series.png)
