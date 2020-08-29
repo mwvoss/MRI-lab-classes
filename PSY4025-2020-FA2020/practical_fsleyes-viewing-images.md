@@ -36,7 +36,7 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 **Open an image with fsleyes**: <br/>
 *  Click on `File` -> `Add from file`
 *  Open the file named `sub-97-T1w_defaced.nii.gz`
-  * Tips on decoding the filename
+  * "defaced" means the face has been removed from the image, why do you think we did that?
 <br/>
 
 **Understanding the T1 image**: <br/>
@@ -47,7 +47,7 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
   * In addition to the coordinate location of your cursor, what additional information is being shown here?
     ![image-location-coordinate-intensity](images/Introduction-to-FSLeyes_coordinates-and-intensity.png)
   * So, how many dimensions are there in the image?
-  * Brief review on anatomy 
+* Brief review on anatomy 
 <br/>
 
 **Terms for talking about anatomy in an image**: <br/>
@@ -70,5 +70,5 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
     * Compare time series data inside and outside the brain
     * Change plotting mode to compare magnitude of signal change in different locations
   * So, how many dimensions are there in the functional image?
-  * Example with timeseries viewer on:
+* Example with timeseries viewer on:
   ![fsleyes-timeseries](images/Introduction-to-FSLeyes_time-series.png)
