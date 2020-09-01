@@ -1,5 +1,5 @@
 **By the end of this practical you should be able to:** <br/>
-* [ ] use FSL's `bet` tool to remove the brain from a T1 image <br/>
+* [ ] use FSL's [bet](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BET/UserGuide) tool to remove the brain from a T1 image <br/>
 * [ ] use FSLeyes to check the output of `bet` <br/> 
 <br/>
 
