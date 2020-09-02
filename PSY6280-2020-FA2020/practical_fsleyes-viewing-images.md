@@ -41,7 +41,7 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 
 **Understanding the T1 image**: <br/>
 * Guided observations: review these questions with your group
-  * Place your cursor at different places in the image and see how it affects coordinates shown here to identify the x, y, and z-axis of the image:
+  * Place your cursor at different places in the image and see how it affects coordinates shown here to identify the x, y, and z-axis of the image:</br>
     ![image-location-coordinate](images/Introduction-to-FSLeyes_coordinates.png). 
     * How many dimensions are there in the image?
   * In addition to the coordinate location of your cursor, what additional information is being shown here?
