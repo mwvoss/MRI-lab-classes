@@ -18,7 +18,8 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 
 
 <br/>
-**Introduction to two coordinate spaces for our 3D images**: <br/>
+
+**Introduction to two coordinate spaces for our 3D images:** <br/>
 * Image-voxel space
   * Think of this as image storage space where voxels as our 3-dimenstional pixels are our units of information. The coordinate origin of this space is (i,j,k)=0,0,0, positioned in the corner of the image as the initial index for storage of data in a matrix, where all values are positive and refer to the location of the mid-point of each whole voxel that will be given an image intensity value.
 * Scanner-world space
