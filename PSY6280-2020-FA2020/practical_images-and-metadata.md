@@ -80,5 +80,12 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
       * Voxel size
       * Pick someone in your group who's willing to share their drawing
 
+**Lab homework data**: <br/>
+*  Open the terminal
+*  Change directories from your home directory to `fmriLab` with the command: `cd fmriLab`
+*  Download new data by copying/pasting to the terminal `wget -O ds003030.tar.gz https://www.dropbox.com/s/phxqxtclprz5gef/ds003030.tar.gz?dl=0`
+*  To unpack the download copy/paste `tar -xvf ds003030.tar.gz`
+*  Move yourself into the folder with data by typing `cd ds003030`
+<br/>
 
 
