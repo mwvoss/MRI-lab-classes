@@ -17,8 +17,9 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 *  Open the terminal
 *  Change directories from your home directory to `fmriLab` with the command: `cd fmriLab`
 *  To download data, copy/paste to the terminal `wget -O ds005.tar.gz https://www.dropbox.com/s/a3xsd5svookh6f9/ds005.tar.gz?dl=0`
-*  To unpack the download copy/paste `tar -xvf ds005.tar.gz`
+*  To unpack your download copy/paste `tar -xvf ds005.tar.gz`
 *  Move yourself into the folder with data by typing `cd ds005`
+*  Note, the example data includes one subject from this [dataset](https://openneuro.org/datasets/ds000005/versions/00001) shared on the public repository OpenNeuro
 <br/>
 
 
