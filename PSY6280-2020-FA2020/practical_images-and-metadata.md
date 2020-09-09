@@ -13,8 +13,14 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 <br/>
 
 
-**Download practice data set**: <br/>
-[link WIP]
+**Download our data for today**: <br/>
+*  Open the terminal
+*  Change directories from your home directory to `fmriLab` with the command: `cd fmriLab`
+*  To download data, copy/paste to the terminal `wget -O ds005.tar.gz https://www.dropbox.com/s/a3xsd5svookh6f9/ds005.tar.gz?dl=0`
+*  Use commands introduced above to see what was downloaded
+*  To unpack the download copy/paste `tar -xvf ds005.tar.gz`
+*  Move yourself into the folder with data by typing `cd ds005`
+<br/>
 
 
 <br/>
