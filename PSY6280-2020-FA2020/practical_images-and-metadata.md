@@ -17,7 +17,6 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 *  Open the terminal
 *  Change directories from your home directory to `fmriLab` with the command: `cd fmriLab`
 *  To download data, copy/paste to the terminal `wget -O ds005.tar.gz https://www.dropbox.com/s/a3xsd5svookh6f9/ds005.tar.gz?dl=0`
-*  Use commands introduced above to see what was downloaded
 *  To unpack the download copy/paste `tar -xvf ds005.tar.gz`
 *  Move yourself into the folder with data by typing `cd ds005`
 <br/>
@@ -42,6 +41,44 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
     ![image-coordinate-spaces](images/images-and-metadata_coordinate-spaces.png)
 <br/>
 
+
+**Now let's look at how we access this information within an image header**: <br/>
+* Go back to the terminal, and move yourself to where the T1 image is in our lab data set. 
+  * `cd ~/fmriLab/ds005/sub-01/anat`
+  * see what is here by typing `ls`
+* Use the command-line tool `fslhd` to see the meta-data for the T1 image
+  * see usage by typing `fslhd` in the terminal
+* Make a text file of the header contents by redirecting the output of the command to a text file
+  * Copy/paste into the terminal: `fslhd sub-01_anat_sub-01_T1w.nii.gz > sub-01_anat_sub-01_T1w_header-annotated.txt`
+  * Open the text file with gedit: `gedit sub-01_anat_sub-01_T1w_header-annotated.txt`
+* In breakout groups
+  * Use the NIfTI reference links from our readings for today to comment in annotations for the following lines in the header:
+    * Lines 4 through 8
+    * Lines 17 through 21
+    * Lines 45 through 62
+    * Pick someone in your group who's willing to share your group's answers 
+  * Draw the image space as a cube with labels for the following information:
+    * Size of the matrix for a slice (hint it's square)
+    * Slice thickness and orientation
+    * Voxel size
+    * Pick someone in your group who's willing to share their drawing
+
+
+**Use what you've learned to inspect the header for the fMR image**: <br/>
+* Go back to the terminal, and move yourself to where the functional image is in our lab data set. 
+  * `cd ~/fmriLab/ds005/sub-01/func`
+  * In breakout groups
+    * Compare and contrast the image data for lines we've annotated above
+      * How does the slice orientation differ?
+      * How many volumes are in the functional image?
+      * How does the voxel size differ?
+      * What is the time of repetition (TR) for each volume?
+      * How does the image orientation differ?
+  * Draw the image space as a cube with labels for the following information:
+      * Size of the matrix for a slice (hint it's square)
+      * Slice thickness and orientation
+      * Voxel size
+      * Pick someone in your group who's willing to share their drawing
 
 
 
