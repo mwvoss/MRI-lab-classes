@@ -25,7 +25,7 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 
 <br/>
 
-**Introduction to two coordinate spaces for our MRI images:** <br/>
+**Introduction to two coordinate spaces for our MR images:** <br/>
 * Image-voxel space
   * Think of this as image storage space with voxels as our 3-dimenstional pixels that are our spatial unit of measurement for intensity values in the image. The coordinate origin of this space is (i,j,k)=0,0,0, positioned in the corner of the image as the initial index for storage of data in a matrix, where all values are positive and refer to the location of the mid-point of each whole voxel that will be given an image intensity value.
 * Scanner-world space
