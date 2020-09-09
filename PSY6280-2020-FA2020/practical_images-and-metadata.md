@@ -26,9 +26,9 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 <br/>
 
 **Introduction to two coordinate spaces for our MR images:** <br/>
-* Image-voxel space
+* **Image-voxel space**
   * Think of this as image storage space with voxels as our 3-dimenstional pixels that are our spatial unit of measurement for intensity values in the image. The coordinate origin of this space is (i,j,k)=0,0,0, positioned in the corner of the image as the initial index for storage of data in a matrix, where all values are positive and refer to the location of the mid-point of each whole voxel that will be given an image intensity value.
-* Scanner-world space
+* **Scanner-world space**
   * Think of this as our destination space for our measurements of the brain, where we have mapped the image to the object as positioned in the physical world of the scanner using common scientific units of distance such as millimeters (mm). The coordinate origin of this space is (x,y,z)=0,0,0, positioned near the center of the image bounding box for subject-space and at a specific anatomical landmark near the center of the brain for standard-space (e.g., anterior commissure), so there will be both negative and positive values in this coordinate space.
 <br/>
 <br/>
