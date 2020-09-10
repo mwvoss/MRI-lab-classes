@@ -45,8 +45,16 @@ EV4: <br/>
 * Click `Go`. When it's finished, the results will appear within your `flanker.feat` directory. Your html report will then include output of brain activation maps as previewed below. We will walk through the contents of the report in class. <br/>
 ![feat-html-report-header-afterstats](images/single-subject_feat-html-report-header-afterstats.png)
 
-* Use the html report to locate the directory where the activation maps are on your computer. Use `fsleyes` to open the `example_func` from that directory, and overlay the `thresh_zstat3.nii.gz` image. Let's talk about what you see, and compare the z-stat map to the `cope3.nii.gz` image in the `stats` folder.
+* Using `fsleyes` will allow us to view the results more interactively:
+    * Use the html report to locate the directory where the activation maps are on your computer
+    * Use the terminal to move yourself there: `cd ~/fmriLab/data/bids/derivatives/sub-001/func/flanker.feat`
+    * Open fsleyes through the terminal with settings for viewing FEAT output: `fsleyes -ad filtered_func_data.nii.gz stats/zstat1 stats/zstat2`
+    * You should see a display like below in `fsleyes`. Clicking on the buttons with arrows in the column labeled `Z Max location` will move your cursor to the location of that peak in brain activation. With this interactive table open, you can also view your activation maps using the `Lightbox` view we previewed when learning about `fsleyes`. Give it a try!
+</br>
 
+![feat-in-fsleyes](images/single-subject_feat-in-fsleyes.png)
+
+</br>
 * Once you've completed all the steps above for `sub-001`, repeat for `sub-002`. Before next class, you should have statistical maps for the same contrasts, in the **same** order, for both subjects.
 
 
