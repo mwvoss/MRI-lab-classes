@@ -66,8 +66,8 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
         * FSL comes with a [collection of atlases](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Atlases) in the MNI152 standard template space that we can view in `fsleyes` to look up anatomy of activation peaks.
         * In the `fsleyes` menu, select `Settings -> Ortho View 1 -> Atlas panel` as shown below. You will now see a new panel in your `fsleyes` layout that links you to the atlases bundled with FSL. 
 </br>
-![feat-group-cluster-output](images/group-analysis_feat-atlas-menu.png)
+![feat-group-cluster-output2](images/group-analysis_feat-atlas-menu.png)
 </br>
-![feat-group-cluster-output](images/group-analysis_feat-atlas-view.png)
+![feat-group-cluster-output3](images/group-analysis_feat-atlas-view.png)
 
 
