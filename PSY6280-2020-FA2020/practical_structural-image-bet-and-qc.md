@@ -15,21 +15,20 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 <br/>
 
 **Overview of lab exercise** <br>
-We will work with the T1 image from sub-01 in ds003030. To start consistent habits for working with data in the bids structure, we'll store our output in derivative folders, each named after the preprocessing step being run (`bet` and `fast`). Within the `fast` directory, we will then use the commandline tool `fslstats` to do math with the images to create variables that quantify how well different tissues are differentiated.
+We will work with the T1 image from sub-01 in ds003030. To start consistent habits for working with data in the bids structure, we'll store our output in a derivatives folder called `anat`. We will then use the commandline tool `fslstats` to do math with the images to create variables that quantify how well different tissues are differentiated.
 
 **Step 1: Set up derivatives** <br>
 We can make new directories with sub directories using `mkdir` with some additional options:
 * Our base `bids directory` is `~/fmriLab/ds003030`. Change directories to move yourself there in the terminal, and make our derivatives directories:
     * `cd ~/fmriLab/ds003030`
-    * `mkdir -p derivatives/bet/sub-01`
-    * `mkdir -p derivatives/fast/sub-01`
-    * You should now have a `derivatives` directory, with two folders inside of it named `bet` and `fast`, which each have a directory for `sub-01`
+    * `mkdir -p derivatives/anat/sub-01`
+    * You should now have a `derivatives` directory, with a folder inside of it named `anat` which contains `sub-01`
 </br>
 
 **Step 2: Run BET to separate brain from non-brain** <br>
 We will run commands from within the subject derivatives directory and use relative file path addresses to refer to files in our base bids directory.
-* In the terminal, move yourself to sub-01's bet derivatives folder:
-    * `cd ~/fmriLab/ds003030/derivatives/bet/sub-01`
+* In the terminal, move yourself to `sub-01`'s anat derivatives folder:
+    * `cd ~/fmriLab/ds003030/derivatives/anat/sub-01`
 *  We will use FSL's `bet` tool (**b**rain **e**xtraction **t**ool) to strip away skull
     * Type `bet` into the terminal prompt to see its usage
         * Our `<input>` image is the reconstructed T1w image in our base `bids directory`
@@ -44,8 +43,13 @@ We will run commands from within the subject derivatives directory and use relat
 </br>
 
 **Step 3: Run FAST to separate tissue types within the skull-stripped image** <br>
-Now that we have a T1 image with only the brain, we can segment the image further into tissue types. Now our input image will be the `*_brain` image and our output image will be within the `fast` derivatives directory. Similar to what we did with `bet`, we'll run `fast` within the output directory.
-* 
+Now that we have a T1 image with only the brain, we can segment the image further into tissue types. Now our input image will be the `*_brain` image.
+ * If not there currently, move again to `sub-01`'s derivative `anat` directory: `cd ~/fmriLab/ds003030/derivatives/anat/sub-01`
+    * Type `fast` into the terminal prompt to see its usage
+        * Run fast with this syntax: `fast -t 1 -n 3 -g -b -B -v sub-01_T1w_brain.nii.gz`
+        * While it's running we'll decode the settings we just specified
+
+
 
 
 
