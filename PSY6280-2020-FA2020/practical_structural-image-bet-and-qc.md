@@ -17,5 +17,40 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 **Overview of lab exercise** <br>
 We will work with the T1 image from sub-01 in ds003030. To start consistent habits for working with data in the bids structure, we'll store our output in derivative folders, each named after the preprocessing step being run (`bet` and `fast`). Within the `fast` directory, we will then use the commandline tool `fslstats` to do math with the images to create variables that quantify how well different tissues are differentiated.
 
-**
+**Step 1: Set up derivatives** <br>
+We can make new directories with sub directories using `mkdir` with some additional options:
+* Our base `bids directory` is `~/fmriLab/ds003030`. Change directories to move yourself there in the terminal, and make our derivatives directories:
+    * `cd ~/fmriLab/ds003030`
+    * `mkdir -p derivatives/bet/sub-01`
+    * `mkdir -p derivatives/fast/sub-01`
+    * You should now have a `derivatives` directory, with two folders inside of it named `bet` and `fast`, which each have a directory for `sub-01`
+</br>
+
+**Step 2: Run BET to separate brain from non-brain** <br>
+We will run commands from within the subject derivatives directory and use relative file path addresses to refer to files in our base bids directory.
+* In the terminal, move yourself to sub-01's bet derivatives folder:
+    * `cd ~/fmriLab/ds003030/derivatives/bet/sub-01`
+*  We will use FSL's `bet` tool (**b**rain **e**xtraction **t**ool) to strip away skull
+    * Type `bet` into the terminal prompt to see its usage
+        * Our `<input>` image is the reconstructed T1w image in our base `bids directory`
+        * We will name our `<output>` image the same as our input, except add `_brain` to the filename
+        * The `Robust` brain center and neck clean-up almost always helps
+        * `bet` almost always underestimates brain vs. skull in the cortex, so I suggest starting with the fractional intensity parameter set at slightly below the default of .5, such as `-f .45`
+        * It is also very helpful to generate a binary mask of the `*_brain` image
+        * Below then is the syntax for a typical good starting point with `bet`:
+            * `fsleyes ../../../sub-01/anat/sub-01_anat_sub-01_T1w.nii.gz sub-01_T1w_brain.nii.gz -R -f .45 -m`
+        * View the results in `fsleyes` by opening the input and output images together:
+            * `fsleyes ../../../sub-01/anat/sub-01_anat_sub-01_T1w.nii.gz sub-01_T1w_brain.nii.gz sub-01_T1w_brain_mask.nii.gz`
+</br>
+
+**Step 3: Run FAST to separate tissue types within the skull-stripped image** <br>
+Now that we have a T1 image with only the brain, we can segment the image further into tissue types. Now our input image will be the `*_brain` image and our output image will be within the `fast` derivatives directory. Similar to what we did with `bet`, we'll run `fast` within the output directory.
+* 
+
+
+
+
+
+
+
 
