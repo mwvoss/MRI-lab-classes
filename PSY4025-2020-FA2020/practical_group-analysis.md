@@ -59,6 +59,8 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
     * Open `fsleyes` through the terminal with settings for viewing FEAT output: `fsleyes -ad /opt/fsl/data/standard/MNI152_T1_2mm_brain.nii.gz rendered_thresh_zstat1.nii.gz`
     * You should see a display like below in `fsleyes`. Clicking on the buttons with arrows in the column labeled `Z Max location` will move your cursor to the location of that peak in brain activation. 
 </br>
+<br/>
+
 ![feat-group-cluster-output](images/group-analysis_feat-group-cluster-output-fsleyes.png)
 
 
