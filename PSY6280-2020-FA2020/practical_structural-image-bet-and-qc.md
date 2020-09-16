@@ -74,6 +74,13 @@ In order to compute quantitative ratios summarizing T1 image quality, we will ne
     * Hint, see mriqc's image quality metrics summarized [here](https://mriqc.readthedocs.io/en/latest/iqms/t1w.html#mriqc.qc.anatomical.cnr)
 
 
+**Lab homework data**: <br/>
+*  Open the terminal
+*  Change directories from your home directory to `fmriLab` with the command: `cd ~/fmriLab/`
+*  Download T1 data by copying/pasting to the terminal `wget -O T1_examples.tar.gz https://www.dropbox.com/s/6fndg0vi5ksgks7/T1_examples.tar.gz?dl=0 `
+*  To unpack the download copy/paste `tar -xvf T1_examples.tar.gz`
+*  Move yourself into the folder with data by typing `cd T1_examples`
+<br/>
 
 
 
