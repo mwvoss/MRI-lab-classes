@@ -40,6 +40,7 @@ We will run commands from within the subject derivatives directory and use relat
             * `fsleyes ../../../sub-01/anat/sub-01_anat_sub-01_T1w.nii.gz sub-01_T1w_brain.nii.gz -R -f .45 -m`
         * View the results in `fsleyes` by opening the input and output images together:
             * `fsleyes ../../../sub-01/anat/sub-01_anat_sub-01_T1w.nii.gz sub-01_T1w_brain.nii.gz sub-01_T1w_brain_mask.nii.gz`
+        * How would you describe what the `mask` is in words?
 </br>
 
 **Step 3: Run FAST to separate tissue types within the skull-stripped image** <br>
@@ -48,7 +49,13 @@ Now that we have a T1 image with only the brain, we can segment the image furthe
     * Type `fast` into the terminal prompt to see its usage
         * Run fast with this syntax: `fast -t 1 -n 3 -g -b -B -v sub-01_T1w_brain.nii.gz`
         * While it's running we'll decode the settings we just specified
-* Check `fast` output
+* Check `fast` output and understand what we have
+    * In `fsleyes` open `sub-01_T1w_brain.nii.gz` and overlay all the images that end with `*_seg_*.nii.gz`
+        * How do the values 0, 1, and 2 map to different tissue types?
+        * Hint: in `fsleyes` assign each `seg` image a different color to see them in a different color on top of the brain image
+    * Now add the images that end with `*_pve_*.nii.gz`
+        * PVE stands for partial volume estimate: each voxel is assigned a value ranging from 0-1 that represents the proportion of that class's tissue present in the voxel
+        * With the two images overlayed, can you tell what `pve` value translates to a `1` in the `seg` binary mask for each tissue type?
 
 </br>
 
