@@ -37,7 +37,7 @@ We will run commands from within the subject derivatives directory and use relat
         * `bet` almost always underestimates brain vs. skull in the cortex, so I suggest starting with the fractional intensity parameter set at slightly below the default of .5, such as `-f .45`
         * It is also very helpful to generate a binary mask of the `*_brain` image
         * Below then is the syntax for a typical good starting point with `bet`:
-            * `fsleyes ../../../sub-01/anat/sub-01_anat_sub-01_T1w.nii.gz sub-01_T1w_brain.nii.gz -R -f .45 -m`
+            * `bet ../../../sub-01/anat/sub-01_anat_sub-01_T1w.nii.gz sub-01_T1w_brain.nii.gz -R -f .45 -m`
         * View the results in `fsleyes` by opening the input and output images together:
             * `fsleyes ../../../sub-01/anat/sub-01_anat_sub-01_T1w.nii.gz sub-01_T1w_brain.nii.gz sub-01_T1w_brain_mask.nii.gz`
         * How would you describe what the `mask` is in words?
