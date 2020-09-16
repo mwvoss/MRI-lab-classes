@@ -59,7 +59,7 @@ Now that we have a T1 image with only the brain, we can segment the image furthe
 
 </br>
 
-**Step 4: Use FAST output to compute image quality ratios**
+**Step 4: Use FAST output to compute image quality ratios** <br>
 In order to compute quantitative ratios summarizing T1 image quality, we will need to extract quantitative estimates of the mean (signal) and compare to an estimate of noise (variability of signal or variability of background noise). To demonstrate the basics of the process we'll work just with the gray matter and white matter tissue signal for the lab. </br>
 
 * `fslstats` is a command-line tool to extract descriptive statistics for image values
@@ -73,8 +73,9 @@ In order to compute quantitative ratios summarizing T1 image quality, we will ne
 * What aspect of the image are we missing with our CNR estimate above? 
     * Hint, see mriqc's image quality metrics summarized [here](https://mriqc.readthedocs.io/en/latest/iqms/t1w.html#mriqc.qc.anatomical.cnr)
 
-
-**Lab homework data**: <br/>
+</br>
+</br>
+**Lab homework data**: <br>
 *  Open the terminal
 *  Change directories from your home directory to `fmriLab` with the command: `cd ~/fmriLab/`
 *  Download T1 data by copying/pasting to the terminal `wget -O T1_examples.tar.gz https://www.dropbox.com/s/6fndg0vi5ksgks7/T1_examples.tar.gz?dl=0 `
