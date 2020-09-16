@@ -7,7 +7,7 @@ Now that we have a feel of the data structure of structural and functional brain
 * [ ] use FSL's [bet](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BET/UserGuide) tool to remove the brain from a T1 image <br/>
 * [ ] use FSL's [fast](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FAST) tool to segment the brain into 3 classes: GM, WM, CSF
 * [ ] use FSLeyes to check the output of `bet` and `fast` <br/> 
-* [ ] use FSL's fslstats tool to compute contrast to noise ratio (CNR) for a T1 image
+* [ ] use FSL's `fslstats` tool to compute ratios summarizing image quality
 <br/>
 
 **Access FastX** through the remote login: <br>
@@ -48,6 +48,27 @@ Now that we have a T1 image with only the brain, we can segment the image furthe
     * Type `fast` into the terminal prompt to see its usage
         * Run fast with this syntax: `fast -t 1 -n 3 -g -b -B -v sub-01_T1w_brain.nii.gz`
         * While it's running we'll decode the settings we just specified
+* Check `fast` output
+
+</br>
+
+**Step 4: Use FAST output to compute image quality ratios**
+In order to compute quantitative ratios summarizing T1 image quality, we will need to extract quantitative estimates of the mean (signal) and compare to an estimate of noise (variability of signal or variability of background noise). To demonstrate the basics of the process we'll work just with the gray matter and white matter tissue signal for the lab. </br>
+
+* `fslstats` is a command-line tool to extract descriptive statistics for image values
+    * Type `fslstats` into the terminal prompt to see its usage
+    * Use the usage to translate this syntax into what it's doing in words: `fslstats sub-01_T1w_brain.nii.gz -k sub-01_T1w_brain_seg_1.nii.gz -M`
+    * Use options within `fslstats` to compute:
+        * Mean and standard deviation of gray matter (GM) signal intensity
+        * Mean and standard deviation of white matter (WM) signal intensity
+        * In whatever program you like, compute the absolute value of the difference of GM and WM intensities, and divide by the sum of their standard deviations. Share your answers and compare steps if you get something different.
+
+* What aspect of the image are we missing with our CNR estimate above? 
+    * Hint, see mriqc's image quality metrics summarized [here](https://mriqc.readthedocs.io/en/latest/iqms/t1w.html#mriqc.qc.anatomical.cnr)
+
+
+
+
 
 
 
