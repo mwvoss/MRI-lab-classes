@@ -82,7 +82,7 @@ We will continue working with the T1 image from `sub-01` in `ds003030` during cl
         * Use opacity control to flicker between images and check alignment
         * Move through landmarks of CSF/white matter/gray matter edges from center out to gyri in each lobe. 
         * How is alignment overall? Problem areas?
-    * Create an overlay comparing alignment with FSL's `slicesdir` program:
+    * FSL's `slicesdir` program to create a png file of axial slices showing your spatially normalized T1 image with the MNI template as a red contour overlay:
 `slicesdir -p $FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz sub-01_T1w_brain_MNIaff.nii.gz`
         * View the .png file of the overlay in the `slicesdir` directory
         * View a list of overlays in the `index.html` folder
