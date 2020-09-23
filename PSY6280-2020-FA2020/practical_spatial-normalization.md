@@ -47,7 +47,7 @@ We will continue working with the T1 image from `sub-01` in `ds003030` during cl
     * Output: name as follows in the same directory `sub-01_T1w_brain_MNIaff.nii.gz`
     * Advanced options:
         * Search: check options, what do we want? 
-        * Cost function: correlation ratio works for most scenarios
+        * Cost function: `correlation ratio` is preferred for inter-modal and `normalised correlation` is preferred for intra-modal. 
         * Interpolation: trilinear is good option for affine image registration
     * Press `Go`
 * You should now see everything we specified in the terminal. Often when learning a new tool or trying different options, it can be helpful to use the GUI and then document your iterations with the code reference. Then when you have a good solution for your data, you can use scripting to automate the process for speed and reproducibility.
@@ -59,7 +59,7 @@ We will continue working with the T1 image from `sub-01` in `ds003030` during cl
     -out ~/fmriLab/ds003030/derivatives/anat/sub-01/sub-01_T1w_brain_MNIaff.nii.gz \
     -omat ~/fmriLab/ds003030/derivatives/anat/sub-01/sub-01_T1w_brain_MNIaff.mat \
     -bins 256 \
-    -cost corratio \
+    -cost normcorr \
     -searchrx -180 180 -searchry -180 180 -searchrz -180 180 \
     -dof 12  \
     -interp trilinear
@@ -67,5 +67,16 @@ We will continue working with the T1 image from `sub-01` in `ds003030` during cl
 
 </br>
 
+**Step 4: Check output in FSLeyes** <br>
+* Open our registered T1 with our MNI template:
+    * `fsleyes $FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz sub-01_T1w_brain_MNIaff.nii.gz`
+    * Start at the origin for world coordinates: 0,0,0
+        * Turn cross-hairs on
+        * Use opacity control to flicker between images and check alignment
+        * Move through landmarks of CSF/white matter/gray matter edges from center out to gyri in each lobe. 
+        * How is alignment overall? Problem areas?
+
+* What if you think it could be better?
+    * [FLIRT FAQs](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT/FAQ)
 
 
