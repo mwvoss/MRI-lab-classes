@@ -6,8 +6,8 @@ The goal of this lab is to learn the basic process of spatial normalization for 
 **By the end of this practical you should be able to:** <br/>
 * [ ] use FSL's [flirt](http://web.mit.edu/fsl_v5.0.10/fsl/doc/wiki/FLIRT(2f)UserGuide.html) tool to perform affine registration on a T1 image <br/>
 * [ ] understand how to view and interpret the resulting affine transformation matrix <br/> 
-* [ ] use FSLeyes to check the alignment of your T1 image to the MNI standard brain <br/> 
-* [ ] for your homework you will learn how to run FSL's [fnirt](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT) on the command-line and compare your results to affine registration
+* [ ] use FSLeyes and contour overlays to check the alignment of your T1 image to the MNI standard brain <br/> 
+* [ ] for your lab homework you will complete running FSL's [fnirt](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT) on the command-line and compare your results to affine registration
 <br/>
 
 **Access FastX** through the remote login: <br>
