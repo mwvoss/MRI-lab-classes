@@ -1,6 +1,6 @@
 **Spatial normalization**
 </br>
-The goal of this lab is to learn the basic process of spatial normalization for at T1 anatomical image, and practice checking alignment between images in fsleyes.
+The goal of this lab is to learn the basic process of spatial normalization for a T1 anatomical image, and practice checking alignment between images in fsleyes.
 </br>
 
 **By the end of this practical you should be able to:** <br/>
@@ -27,7 +27,7 @@ We will continue working with the T1 image from `sub-01` in `ds003030` during cl
 
 **Step 2: Use FSLeyes to open MNI standard images bundled with FSL and think about best reference image for your T1** <br>
 * Use `fslhd` to remind yourself of the T1's spatial resolution and image orientation (LPI or RPI)
-* Open FSL at the commandline: `fsl &`
+* Open FSL at the command line: `fsl &`
 * Click on the `FSLeyes` button
 * Menu options: File -> Add standard
 * Compare the `MNI152_T1_2mm.nii.gz` to `MNI152_T1_1mm.nii.gz`
@@ -37,7 +37,7 @@ We will continue working with the T1 image from `sub-01` in `ds003030` during cl
 
 
 **Step 3: Understand FLIRT options with the GUI** <br>
-* Open FSL at the commandline: `fsl &`
+* Open FSL at the command-line: `fsl &`
 * Click on the `FLIRT linear registration` button
 * Our initial options:
     * Mode: keep default as 2-stage registration
@@ -48,7 +48,7 @@ We will continue working with the T1 image from `sub-01` in `ds003030` during cl
     * Advanced options:
         * Search: check options, what do we want? 
         * Cost function: `correlation ratio` is preferred for inter-modal and `normalised correlation` is preferred for intra-modal. 
-        * Interpolation: trilinear is good option for affine image registration
+        * Interpolation: `trilinear` is good option for affine image registration
     * Press `Go`
     </br>
 
