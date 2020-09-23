@@ -7,7 +7,7 @@ The goal of this lab is to learn the basic process of spatial normalization for 
 * [ ] use FSL's [flirt](http://web.mit.edu/fsl_v5.0.10/fsl/doc/wiki/FLIRT(2f)UserGuide.html) tool to perform affine registration on a T1 image <br/>
 * [ ] understand how to view and interpret the resulting affine transformation matrix <br/> 
 * [ ] use FSLeyes to check the alignment of your T1 image to the MNI standard brain <br/> 
-* [ ] for your homework you will learn how to run FSL's [fnirt] on the command-line and compare your results to affine registration
+* [ ] for your homework you will learn how to run FSL's [fnirt](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FNIRT) on the command-line and compare your results to affine registration
 <br/>
 
 **Access FastX** through the remote login: <br>
@@ -41,7 +41,30 @@ We will continue working with the T1 image from `sub-01` in `ds003030` during cl
 * Click on the `FLIRT linear registration` button
 * Our initial options:
     * Mode: keep default as 2-stage registration
-    * Reference image: we have a 1mm standard image
+    * Reference image: use file browswer to pick the MNI standard of choice
+    * Model/DOF: look at options, relate to lecture, what are the transformations allowed in the 12 parameter model?
+    * Input image: use file-browser to specify our skull-stripped T1 image `sub-01_T1w_brain.nii.gz`
+    * Output: name as follows in the same directory `sub-01_T1w_brain_MNIaff.nii.gz`
+    * Advanced options:
+        * Search: check options, what do we want? 
+        * Cost function: correlation ratio works for most scenarios
+        * Interpolation: trilinear is good option for affine image registration
+    * Press `Go`
+* You should now see everything we specified in the terminal. Often when learning a new tool or trying different options, it can be helpful to use the GUI and then document your iterations with the code reference. Then when you have a good solution for your data, you can use scripting to automate the process for speed and reproducibility.
+    * For example, below is how you would run the steps we selected on the command-line. The backward slash allows you to continue the command in a new line, which can help with seeing what options are specified for each argument. </br>
+    
+    ```
+    flirt -in ~/fmriLab/ds003030/derivatives/anat/sub-01/sub-01_T1w_brain.nii.gz \
+    -ref $FSLDIR/data/standard/MNI152_T1_2mm_brain \
+    -out ~/fmriLab/ds003030/derivatives/anat/sub-01/sub-01_T1w_brain_MNIaff.nii.gz \
+    -omat ~/fmriLab/ds003030/derivatives/anat/sub-01/sub-01_T1w_brain_MNIaff.mat \
+    -bins 256 \
+    -cost corratio \
+    -searchrx -180 180 -searchry -180 180 -searchrz -180 180 \
+    -dof 12  \
+    -interp trilinear
+    ```
+
 </br>
 
 
