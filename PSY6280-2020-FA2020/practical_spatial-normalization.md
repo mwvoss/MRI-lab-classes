@@ -52,10 +52,10 @@ We will continue working with the T1 image from `sub-01` in `ds003030` during cl
     * Press `Go`
 * You should now see everything we specified in the terminal. Often when learning a new tool or trying different options, it can be helpful to use the GUI and then document your iterations with the code reference. Then when you have a good solution for your data, you can use scripting to automate the process for speed and reproducibility.
     * For example, below is how you would run the steps we selected on the command-line. The backward slash allows you to continue the command in a new line, which can help with seeing what options are specified for each argument. </br>
-    
+
     ```
     flirt -in ~/fmriLab/ds003030/derivatives/anat/sub-01/sub-01_T1w_brain.nii.gz \
-    -ref $FSLDIR/data/standard/MNI152_T1_2mm_brain \
+    -ref $FSLDIR/data/standard/MNI152_T1_1mm_brain \
     -out ~/fmriLab/ds003030/derivatives/anat/sub-01/sub-01_T1w_brain_MNIaff.nii.gz \
     -omat ~/fmriLab/ds003030/derivatives/anat/sub-01/sub-01_T1w_brain_MNIaff.mat \
     -bins 256 \
