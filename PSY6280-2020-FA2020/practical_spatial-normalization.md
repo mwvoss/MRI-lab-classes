@@ -122,6 +122,7 @@ applywarp -i sub-01_T1w_brain.nii.gz \
 `slicesdir -p $FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz sub-01_T1w_brain_MNIaff.nii.gz sub-01_T1w_MNInonlin.nii.gz`
 
 </br>
-You should now see an overlay for both the affine and non-linear registrations: </br>
-![image-location-coordinate](images/normalization_slicedir_output.png)
+You should now see an overlay for both the affine and non-linear registrations: 
+
+![image-slicesdir](images/normalization_slicesdir_output.png)
 
