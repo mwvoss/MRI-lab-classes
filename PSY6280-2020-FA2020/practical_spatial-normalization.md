@@ -32,7 +32,7 @@ We will continue working with the T1 image from `sub-01` in `ds003030` during cl
 * Menu options: File -> Add standard
 * Compare the `MNI152_T1_2mm.nii.gz` to `MNI152_T1_1mm.nii.gz`
     * which reference should we use for our T1 image?
-    * what orientation is the standard?  use the "i" button underneath the `File` menu to see metadata in the image header
+    * what orientation is the standard?  use the `i` button underneath the `File` menu to see metadata in the image header
 </br>
 
 
@@ -50,8 +50,9 @@ We will continue working with the T1 image from `sub-01` in `ds003030` during cl
         * Cost function: `correlation ratio` is preferred for inter-modal and `normalised correlation` is preferred for intra-modal. 
         * Interpolation: trilinear is good option for affine image registration
     * Press `Go`
-* You should now see everything we specified in the terminal. Often when learning a new tool or trying different options, it can be helpful to use the GUI and then document your iterations with the code reference. Then when you have a good solution for your data, you can use scripting to automate the process for speed and reproducibility.
-    * For example, below is how you would run the steps we selected on the command-line. The backward slash allows you to continue the command in a new line, which can help with seeing what options are specified for each argument. </br>
+    </br>
+
+* You should now see everything we specified in the terminal. Often when learning a new tool or trying different options, it can be helpful to use the GUI and then document your iterations with the code reference. Then when you have a good solution for your data, you can use scripting to automate the process for speed and reproducibility. For example, below is how you would run the steps we selected on the command-line. The backward slash allows you to continue the command in a new line, which can help with seeing what options are specified for each argument. </br>
 
     ```
     flirt -in ~/fmriLab/ds003030/derivatives/anat/sub-01/sub-01_T1w_brain.nii.gz \
@@ -67,6 +68,12 @@ We will continue working with the T1 image from `sub-01` in `ds003030` during cl
 
 </br>
 
+* What does `omat` refer to?
+    * This is the affine transformation matrix summarizing the transform from native to standard space that was just completed.
+    * View in the terminal by typing: `cat sub-01_T1w_brain_MNIaff.mat`
+    * This is your `recipe` for moving in reverse from MNI to T1 native space, or for applying this same transform to another image. This affine transform can also form as the starting point for non-linear registration with FNIRT.</br>
+
+
 **Step 4: Check output in FSLeyes** <br>
 * Open our registered T1 with our MNI template:
     * `fsleyes $FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz sub-01_T1w_brain_MNIaff.nii.gz`
@@ -75,8 +82,46 @@ We will continue working with the T1 image from `sub-01` in `ds003030` during cl
         * Use opacity control to flicker between images and check alignment
         * Move through landmarks of CSF/white matter/gray matter edges from center out to gyri in each lobe. 
         * How is alignment overall? Problem areas?
+    * Create an overlay comparing alignment with FSL's `slicesdir` program:
+`slicesdir -p $FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz sub-01_T1w_brain_MNIaff.nii.gz`
+        * View the .png file of the overlay in the `slicesdir` directory
+        * View a list of overlays in the `index.html` folder
 
 * What if you think it could be better?
     * [FLIRT FAQs](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT/FAQ)
 
+
+**Step 5: Refine with non-linear registration using FNIRT** <br>
+* After an initial affine registration, better local alignment can often be achieved with non-linear registration.
+* Below shows how to run `FNIRT` on the command-line:
+
+```
+fnirt --iout=sub-01_T1w_MNI_head --in=sub-01_T1w \
+--aff=sub-01_T1w_brain_MNIaff.mat \
+--cout=sub-01_T1w_MNI_warp --iout=sub-01_T1w_MNInonlin \
+--jout=sub-01_T1w_MNI_jac \
+--ref=MNI152_T1_1mm.nii.gz --refmask=MNI152_T1_1mm_brain_mask_dil.nii.gz \
+--warpres=10,10,10
+```
+
+* FNIRT can take some time, when it is finished: 
+    * check your alignment: `fsleyes $FSLDIR/data/standard/MNI152_T1_1mm.nii.gz sub-01_T1w_MNInonlin.nii.gz` 
+
+
+* You can now apply your non-linear warp to your skull-stripped T1 with `applywarp`:
+```
+applywarp -i sub-01_T1w_brain.nii.gz \
+-r $FSLDIR/data/standard/MNI152_T1_1mm_brain \
+-o sub-01_T1w_MNInonlin.nii.gz \
+-w sub-01_T1w_MNI_warp.nii.gz
+```
+
+* Check your alignment and compare to affine: `fsleyes $FSLDIR/data/standard/MNI152_T1_1mm.nii.gz sub-01_T1w_brain_MNIaff.nii.gz sub-01_T1w_MNInonlin.nii.gz` 
+
+* Add your new non-linear result to your list of overlays comparing alignment with FSL's `slicesdir` program:
+`slicesdir -p $FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz sub-01_T1w_brain_MNIaff.nii.gz sub-01_T1w_MNInonlin.nii.gz`
+
+</br>
+You should now see an overlay for both the affine and non-linear registrations: </br>
+![image-location-coordinate](images/normalization_slicedir_output.png)
 
