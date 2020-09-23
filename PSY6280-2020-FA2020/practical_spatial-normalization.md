@@ -96,7 +96,7 @@ We will continue working with the T1 image from `sub-01` in `ds003030` during cl
 * Below shows how to run `FNIRT` on the command-line:
 
 ```
-fnirt --iout=sub-01_T1w_MNI_head --in=sub-01_T1w \
+fnirt --iout=sub-01_T1w_MNI_head --in=../../../sub-01/anat/sub-01_anat_sub-01_T1w.nii.gz \
 --aff=sub-01_T1w_brain_MNIaff.mat \
 --cout=sub-01_T1w_MNI_warp --iout=sub-01_T1w_MNInonlin \
 --jout=sub-01_T1w_MNI_jac \
