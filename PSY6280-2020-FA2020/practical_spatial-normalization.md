@@ -74,7 +74,7 @@ We will continue working with the T1 image from `sub-01` in `ds003030` during cl
     * This is your `recipe` for moving in reverse from MNI to T1 native space, or for applying this same transform to another image. This affine transform can also form as the starting point for non-linear registration with FNIRT.</br>
 
 
-**Step 4: Check output in FSLeyes** <br>
+**Step 4: Check output in FSLeyes and contour overlays** <br>
 * Open our registered T1 with our MNI template:
     * `fsleyes $FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz sub-01_T1w_brain_MNIaff.nii.gz`
     * Start at the origin for world coordinates: 0,0,0
@@ -82,7 +82,7 @@ We will continue working with the T1 image from `sub-01` in `ds003030` during cl
         * Use opacity control to flicker between images and check alignment
         * Move through landmarks of CSF/white matter/gray matter edges from center out to gyri in each lobe. 
         * How is alignment overall? Problem areas?
-    * FSL's `slicesdir` program to create a png file of axial slices showing your spatially normalized T1 image with the MNI template as a red contour overlay:
+    * For more static documentation of alignment, use FSL's `slicesdir` program to create a png file of axial slices showing your spatially normalized T1 image with the MNI template as a red contour overlay:
 `slicesdir -p $FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz sub-01_T1w_brain_MNIaff.nii.gz`
         * View the .png file of the overlay in the `slicesdir` directory
         * View a list of overlays in the `index.html` folder
