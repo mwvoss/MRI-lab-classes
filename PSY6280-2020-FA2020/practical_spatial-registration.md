@@ -150,9 +150,10 @@ applywarp --ref=$FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz \
 * Make a contour overlay of our result for a static image:
 ```
 slicesdir -o \
-example_func_vol-first_toT1_6dof.nii.gz example_func_vol-first_toT1_bbr_fast_wmedge.nii.gz \ example_func_vol-first_toT1_bbr.nii.gz example_func_vol-first_toT1_bbr_fast_wmedge.nii.gz \
+example_func_vol-first_toT1_6dof.nii.gz example_func_vol-first_toT1_bbr_fast_wmedge.nii.gz \
+example_func_vol-first_toT1_bbr.nii.gz example_func_vol-first_toT1_bbr_fast_wmedge.nii.gz \
 example_func_vol-first_toMNI.nii.gz $FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz \
-example_func_vol-first_toMNI-bbr.nii.gz $FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz 
+example_func_vol-first_toMNI-bbr.nii.gz $FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz
 ```
 
 
