@@ -91,12 +91,19 @@ convertwarp --ref=$FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz \
 
 * Apply concatenated transform
 ```
-applywarp --ref=$FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz \ --in=example_func_vol-first_brain.nii.gz \
---out=example_func_vol-first_toMNI \
+applywarp --ref=$FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz \
+--in=example_func_vol-first_brain.nii.gz \
+--out=example_func_vol-first_toMNI.nii.gz \
 --warp=example_func_vol-first_toMNI_warp.nii.gz
 ```
 
+* Make a contour overlay of our result for a static image:
+`slicesdir -p $FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz example_func_vol-first_toMNI.nii.gz`
 
+
+**Lab Homework** 
+
+* Write a script named `run_registration_vol-mid.sh` that completes the same series of steps for the middle bold volume. Your output should include the addition of a new contour overlay image to your slicesdir index.html, which summarizes the co-registration of both your first and middle bold volumes.
 
 
 
