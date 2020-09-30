@@ -5,6 +5,7 @@ The goal of this lab is to learn the process of co-registration between two imag
 
 **By the end of this practical you should be able to:** <br/>
 * [ ] use FSL's [flirt](http://web.mit.edu/fsl_v5.0.10/fsl/doc/wiki/FLIRT(2f)UserGuide.html) tool co-register your T2* bold image to your high-resolution T1 image <br/>
+* [ ] store and run your code in a bash script file 
 * [ ] use FSL's tool [epi_reg](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT/UserGuide#epi_reg) tool to run boundary-based registration [bbr](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT_BBR) to compare with `flirt` alone
 * [ ] concatenate transformation matrices to perform spatial normalization on the T2* bold image <br/> 
 * [ ] use FSLeyes and contour overlays to check the alignment of co-registration and normalization results <br/> 
@@ -59,17 +60,20 @@ Put this command in a script with the following steps:
 * in the terminal type: `gedit run_registration.sh`
 * with this file open, copy in the text below, and hit `Save`
     * notice what's going on with the # to help document your code
+    * what does the `echo` command do and how is that helpful?
 
 ```
 #!/bin/bash
 
-# co-register first bold volume to T1 with flirt
+# Co-register first bold volume with T1 using FLIRT rigid body alignment
+echo "running flirt rigid body co-registration"
+
 flirt -in example_func_vol-first_brain.nii.gz \
 -ref ~/fmriLab/ds003030/derivatives/anat/sub-01/sub-01_T1w_brain.nii.gz \
--out example_func_vol-first_toT1_6dof \  
--omat example_func_vol-first_toT1_6dof.mat \ 
--cost corratio \  # correlation ratio cost function
--dof 6 \ 
+-out example_func_vol-first_toT1_6dof \
+-omat example_func_vol-first_toT1_6dof.mat \
+-cost corratio \
+-dof 6 \
 -searchrx -90 90 -searchry -90 90 -searchrz -90 90 \
 -interp trilinear
 ```
@@ -154,7 +158,9 @@ example_func_vol-first_toMNI-bbr.nii.gz $FSLDIR/data/standard/MNI152_T1_1mm_brai
 
 **Lab Homework** 
 
-* Write a script named `run_registration_vol-mid.sh` that completes the same series of steps for the middle bold volume. Your output should include the addition of a new contour overlay image to your slicesdir index.html, which summarizes the co-registration of both your first and middle bold volumes.
+* Write a script named `run_registration_vol-mid.sh` that completes the same series of steps for the middle bold volume. Your output should include the addition of a new set of contour overlay images to your slicesdir index.html, which summarizes the co-registration of both your first and middle bold volumes using both flirt (6dof) and flirt+bbr.
+
+
 
 
 
