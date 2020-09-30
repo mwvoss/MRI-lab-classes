@@ -161,6 +161,7 @@ example_func_vol-first_toMNI-bbr.nii.gz $FSLDIR/data/standard/MNI152_T1_1mm_brai
 **Lab Homework** 
 
 * Write a script named `run_registration_vol-mid.sh` that completes the same series of steps for the middle bold volume. Your output should include the addition of a new set of contour overlay images to your slicesdir index.html, which summarizes the co-registration of both your first and middle bold volumes using both flirt (6dof) and flirt+bbr.
+* Compare effects of adjusting initial FLIRT results with DOF 6, 9, and 12. What makes the biggest difference?
 
 
 
