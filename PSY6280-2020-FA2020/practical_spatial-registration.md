@@ -1,4 +1,4 @@
-*Spatial registration**
+**Spatial registration**
 </br>
 The goal of this lab is to learn the process of co-registration between two image modalities such as function to structure, and spatial normalization of lower-resolution images (such as funcitonal MRIs). We will continue to use skills of checking alignment of image registration with fsleyes and contour maps.
 </br>
@@ -77,8 +77,24 @@ flirt -in example_func_vol-first_brain.nii.gz \
     * use `fslhd` to see if image orientation for T1 and bold are correctly matched
 
 
+**Step 4: Spatial normalization of the bold image to the MNI template**
 
+We now have the transformation "recipe" for bold->T1w->MNI. However, we don't want to apply these sequentially on the images themselves because once the bold image is transformed we lose some precision in the image compared to the original. So we'll combine these transforms mathematically via concatenation with FSL's `convertwarp` tool.</br>
 
+* concatenation step:
+```
+convertwarp --ref=$FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz \
+--premat=example_func_vol-first_toT1_6dof.mat \
+--warp1=../../../anat/sub-01/sub-01_T1w_MNI_warp \
+--out=example_func_vol-first_toMNI_warp.nii.gz
+```
+
+* Apply concatenated transform
+```
+applywarp --ref=$FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz \ --in=example_func_vol-first_brain.nii.gz \
+--out=example_func_vol-first_toMNI \
+--warp=example_func_vol-first_toMNI_warp.nii.gz
+```
 
 
 
