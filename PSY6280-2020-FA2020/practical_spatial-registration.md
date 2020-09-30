@@ -23,6 +23,7 @@ We will continue working with the T1 and bold image from `sub-01` in `ds003030` 
     * Within ~bids/derivatives/anat/sub-01, this lab assumes you have 
         * a skull-stripped T1 image from the last lab: `sub-01_T1w_brain.nii.gz`
         * an affine transformation for aligning the T1 to MNI: `sub-01_T1w_brain_MNIaff.mat`
+        * non-linear warp transformation for aligning T1 to MNI: `sub-01_T1w_MNI_warp.nii.gz`
 </br>
 
 **Step 2: Prepare a new derivatives directory for the functional bold data**
