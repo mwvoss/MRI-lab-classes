@@ -42,7 +42,7 @@ We will continue working with the T1 and bold image from `sub-01` in `ds003030` 
 
 **Step 3: Co-registration of the bold image to the same subject's T1 image**
 
-* We will use flirt with the following options, and let's talk about why
+We will use flirt with the following options, and let's talk about why
 
 ```
 flirt -in example_func_vol-first_brain.nii.gz \
@@ -73,12 +73,13 @@ flirt -in example_func_vol-first_brain.nii.gz \
 ```
 
 * run the script in the terminal by typing: `bash run_registration.sh`
-* registration outputs:
+* **look at** registration outputs:
     * check alignment with fsleyes: `fsleyes ~/fmriLab/ds003030/derivatives/anat/sub-01/sub-01_T1w_brain.nii.gz example_func_vol-first_toT1_6dof.nii.gz`
     * use `fslhd` to see if image orientation for T1 and bold are correctly matched
 
+</br>
 
-* for comparison, run flirt result with flirt+bbr using FSL's `epi_reg` tool:
+For comparison, run flirt result with flirt+bbr using FSL's `epi_reg` tool:
 ```
 epi_reg --epi=example_func_vol-first_brain.nii.gz \
 --t1=../../../../sub-01/anat/sub-01_anat_sub-01_T1w.nii.gz \
@@ -93,13 +94,16 @@ epi_reg --epi=example_func_vol-first_brain.nii.gz \
 * compare results with paired contour overlay images: 
 `slicesdir -o example_func_vol-first_toT1_6dof.nii.gz example_func_vol-first_toT1_bbr_fast_wmedge.nii.gz  example_func_vol-first_toT1_bbr.nii.gz example_func_vol-first_toT1_bbr_fast_wmedge.nii.gz`
 
+</br>
 
 
 **Step 4: Spatial normalization of the bold image to the MNI template**
 
 We now have the transformation "recipe" for bold->T1w->MNI. However, we don't want to apply these sequentially on the images themselves because once the bold image is transformed we lose some precision in the image compared to the original. So we'll combine these transforms mathematically via concatenation with FSL's `convertwarp` tool.</br>
+</br>
 
-* concatenation step:
+**Run concatenation step on both transform recipes:**
+* Flirt corratio with 6 dof
 ```
 # flirt corratio with 6 dof
 convertwarp --ref=$FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz \
@@ -108,6 +112,8 @@ convertwarp --ref=$FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz \
 --out=example_func_vol-first_toMNI_warp.nii.gz
 ```
 
+
+* Flirt corratio + bbr
 ```
 # flirt corratio + bbr
 convertwarp --ref=$FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz \
@@ -116,7 +122,8 @@ convertwarp --ref=$FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz \
 --out=example_func_vol-first_toMNI-bbr_warp.nii.gz
 ```
 
-* Apply concatenated transform
+**Apply concatenated transforms for both recipes:**
+* Flirt corratio with 6 dof
 ```
 # flirt corratio
 applywarp --ref=$FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz \
@@ -125,6 +132,7 @@ applywarp --ref=$FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz \
 --warp=example_func_vol-first_toMNI_warp.nii.gz
 ```
 
+* Flirt corratio + bbr
 ```
 # flirt corratio + bbr
 applywarp --ref=$FSLDIR/data/standard/MNI152_T1_1mm_brain.nii.gz \
