@@ -5,7 +5,7 @@ The goal of this lab is to learn the process of co-registration between two imag
 
 **By the end of this practical you should be able to:** <br/>
 * [ ] use FSL's [flirt](http://web.mit.edu/fsl_v5.0.10/fsl/doc/wiki/FLIRT(2f)UserGuide.html) tool co-register your T2* bold image to your high-resolution T1 image <br/>
-* [ ] use FSL's tool [epi_reg]() tool to run boundary-based registration (bbr) to compare with `flirt` alone
+* [ ] use FSL's tool [epi_reg](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT/UserGuide#epi_reg) tool to run boundary-based registration [bbr](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT_BBR) to compare with `flirt` alone
 * [ ] concatenate transformation matrices to perform spatial normalization on the T2* bold image <br/> 
 * [ ] use FSLeyes and contour overlays to check the alignment of co-registration and normalization results <br/> 
 
