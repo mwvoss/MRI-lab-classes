@@ -58,16 +58,18 @@ flirt -in example_func_vol-first_brain.nii.gz \
 Put this command in a script with the following steps:
 * in the terminal type: `gedit run_registration.sh`
 * with this file open, copy in the text below, and hit `Save`
+    * notice what's going on with the # to help document your code
 
 ```
 #!/bin/bash
 
+# co-register first bold volume to T1 with flirt
 flirt -in example_func_vol-first_brain.nii.gz \
 -ref ~/fmriLab/ds003030/derivatives/anat/sub-01/sub-01_T1w_brain.nii.gz \
--out example_func_vol-first_toT1_6dof \
--omat example_func_vol-first_toT1_6dof.mat \
--cost corratio \
--dof 6 \
+-out example_func_vol-first_toT1_6dof \  
+-omat example_func_vol-first_toT1_6dof.mat \ 
+-cost corratio \  # correlation ratio cost function
+-dof 6 \ 
 -searchrx -90 90 -searchry -90 90 -searchrz -90 90 \
 -interp trilinear
 ```
