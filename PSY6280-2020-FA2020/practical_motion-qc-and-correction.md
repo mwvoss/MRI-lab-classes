@@ -40,8 +40,8 @@ Using the code below, make a bash script called `run_mcflirt.sh` to run motion c
             * find one example
         * expression of variables within `echo` commands
             * find one example
-        * check if a file exists using an `if``then` statement
-        
+        * check if a file exists using an `if-then` statement
+
 
 ```
 #!/bin/bash
@@ -133,27 +133,43 @@ echo "Mean FD (Power et al., 2012) was ${fd_mean}"
 echo "Mean DVARS (Power et al, 2012) was ${dvars_mean}"
 ```
 
-**Interpretation of relative motion displacement estimates:** </br>
+
+**Step 3: View motion trace plots to interpret to assess severity of head motion**
+
+A. **Interpretation of motion displacement estimates** </br>
 
 **Jenkinson et al., 2002**
 * Differentiating head realignment parameters across frames yields a six dimensional timeseries that represents instantaneous head motion. 
 * Rotational displacements are converted from degrees to millimeters by calculating displacement on the surface of a sphere of radius 80 mm.
-* Takes into account the range of voxel displacements over the sphere by computing the root-mean-square (with mean across all intracerebral voxels) of translation (mm) of the voxels before sphere model
+* Takes into account the range of voxel displacements over the sphere by computing the root-mean-square (with mean across all intracerebral voxels) of translation (mm) of the voxels before sphere model.
+* This can be output from `mcflirt` with the `-rmsrel` flag, which matches the relative displacement (mm) trace shown together with the absolute displacement as estimated from our `mcflirt` call. This is the same variable referred to as `fdrms` computed by `fsl_motion_outliers`. Compare their traces below:<br>
+
+![image-relrms](images/motion_mot-disp.png)
+![image-fdrms](images/motion_mot-fdrms.png)
 
 **Power et al., 2012**
 * Rotational displacements are converted from degrees to millimeters by calculating displacement on the surface of a sphere of radius 50 mm.
-* Assumes that all voxels undergo equivalent displacements along the sphere in response to a given rotation
-* These tend to be about twice as large as the Jenkinson estimates
+* Assumes that all voxels undergo equivalent displacements along the sphere in response to a given rotation.
+* These tend to be about twice as large as the Jenkinson estimates, and we indeed replicate this trend as shown by the trace below: <br>
+![image-fd](images/motion_mot-fd.png)
+</br>
 
-
-**Step 3: View motion trace plots to assess severity of head motion**
-
-The script we just ran made `.png` files to summarize motion and image intensity chagnes over time. You can open these from the terminal with a `loop` command like this: <br>
+**TIP!** <br>
+You can open a set of `.png` files from the terminal with a `loop` command like this: <br>
 ```
 for p in mot_*.png; do eog "$p";done
 ```
 
+B. **Interpretation of FSL-derived volume-to-volume bold intensity estimates** </br>
+* `DVARS` is the root-mean-square intensity difference of volume N to volume N+1 as proposed by Power et al., 2012. This quantifies the rate of volume-to-volume change in the BOLD signal. Higher values indicate more instances of rapid changes in BOLD signal intensity, which is an indicator of more volumes corrupted by motion. So higher is bad.
+* Think of this as an intensity-based metric that matches the FD volume-displacement based metric shown above. For higher motion subjects when the quality of motion correction is highly variable, then an intensity based estimate could be more reliable.
+![image-dvars](images/motion_mot-dvars.png)
 
+
+
+C. **Interpretation of MRIQC-derived image quality metrics relevant to motion** </br>
+* [MRIQC](https://mriqc.readthedocs.io/en/stable/) is a tool developed by the Poldrack Lab at Stanford University for use at the Center for Reproducible Neuroscience (CRN), as well as for open-source software distribution. We will not run this tool on our data today, but it's a great tool for generating nice summary reports of your data for inspection.
+* Download the MRIQC report for sub-01's functional data [here](https://www.dropbox.com/s/opmxj8y5o37qyra/sub-01_task-FlickeringCheckerBoard_run-1_bold.html?dl=0)
 
 
 
