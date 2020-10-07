@@ -136,7 +136,7 @@ echo "Mean DVARS (Power et al, 2012) was ${dvars_mean}"
 
 **Step 3: View motion trace plots to interpret to assess severity of head motion**
 
-A. **Interpretation of motion displacement estimates** </br>
+**A. Interpretation of motion displacement estimates** </br>
 
 **Jenkinson et al., 2002**
 * Differentiating head realignment parameters across frames yields a six dimensional timeseries that represents instantaneous head motion. 
@@ -160,16 +160,33 @@ You can open a set of `.png` files from the terminal with a `loop` command like 
 for p in mot_*.png; do eog "$p";done
 ```
 </br>
-B. **Interpretation of FSL-derived volume-to-volume bold intensity estimates** </br>
+
+**B. Interpretation of FSL-derived volume-to-volume bold intensity estimates** <br> 
 * `DVARS` is the root-mean-square intensity difference of volume N to volume N+1 as proposed by Power et al., 2012. This quantifies the rate of volume-to-volume change in the BOLD signal. Higher values indicate more instances of rapid changes in BOLD signal intensity, which is an indicator of more volumes corrupted by motion. So higher is bad.
 * Think of this as an intensity-based metric that matches the FD volume-displacement based metric shown above. For higher motion subjects when the quality of motion correction is highly variable, then an intensity based estimate could be more reliable.
 ![image-dvars](images/motion_mot-dvars.png)
 
 
 
-C. **Interpretation of MRIQC-derived image quality metrics relevant to motion** </br>
+**C. Interpretation of MRIQC-derived image quality metrics relevant to motion** </br>
 * [MRIQC](https://mriqc.readthedocs.io/en/stable/) is a tool developed by the Poldrack Lab at Stanford University for use at the Center for Reproducible Neuroscience (CRN), as well as for open-source software distribution. We will not run this tool on our data today, but it's a great tool for generating nice summary reports of your data for inspection.
 * Download the MRIQC report for sub-01's functional data [here](https://www.dropbox.com/s/wtydb4oclinklak/sub-01_MRIQC_%20individual%20bold%20report.pdf?dl=0)
+    * After clicking the link, click the ellipsis `...` at top right for `Direct Download` as a `pdf` file. 
+    * These files are natively saved and viewed as `html` files but for ease of download and viewing we'll look at the report as a `pdf`.
+* Similar to FSL output, MRIQC generates traces of both volume-to-volume displacement and intensity changes:
+![image-mriqc](images/motion_mriqc-traces.png)
+<br>
+* MRIQC also generates a "carpet plot" which shows the time series for all voxels within the brain mask. Voxels are grouped into cortical (blue) and subcortical (orange) gray matter, cerebellum (green), and white matter and CSF (red), indicated by the color map on the left-hand side. An ideal carpet plot looks like this, where there no globl intensity shifts through columns, which would be a sign of affecting all voxels in a global manner. 
+![image-mriqc](images/motion_mriqc-carpet.png)
+* As comparison, below are traces and corresponding carpet plot for medium and high-motion data sets from our lab: <br>
+
+**Medium motion**
+![image-mriqc](images/motion_mriqc-carpet-medmotion.png)
+
+**High motion**
+![image-mriqc](images/motion_mriqc-carpet-himotion.png)
+</br>
+
 
 
 
