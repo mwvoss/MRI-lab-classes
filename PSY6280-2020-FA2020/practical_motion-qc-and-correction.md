@@ -25,13 +25,23 @@ We will continue working with the data from `sub-01` in `ds003030` during class 
 * At the terminal, type: `mkdir -p ~/fmriLab/ds003030/derivatives/func/sub-01/motion`
     * move yourself to this new directory with `cd`
     * copy our bold image here for ease to work with: `cp ~/fmriLab/ds003030/sub-01/func/sub-01_func_sub-01_task-FlickeringCheckerBoard_run-1_bold.nii.gz sub-01_task-bold.nii.gz`
- 
+ </br>
 
 **Step 2: Run motion correction**
 
-Using the code below, make a bash script called `run_mcflirt.sh` to run motion correction, and run it to produce motion correction output.
-    * suggest to use VS Code editor
-    * to make a new file or edit an existing file: `code run_mcflirt.sh`
+Using the code below, make a bash script called `run_mcflirt.sh` to run motion correction, and run it to produce motion correction output. <br>
+* suggest to use VS Code editor
+* to make a new file or edit an existing file: `code run_mcflirt.sh`
+    * notice some new tricks for the code in the script:
+        * define the input volume as a variable named `invol`
+            * how can this be used later in the script?
+            * why would we do this?
+        * define the output of a command as a variable
+            * find one example
+        * expression of variables within `echo` commands
+            * find one example
+        * check if a file exists using an `if``then` statement
+        
 
 ```
 #!/bin/bash
@@ -44,7 +54,7 @@ halfPoint=$(fslhd "${invol}.nii.gz" | grep "^dim4" | awk '{print int($2/2)}')
 echo "Middle volume is $halfPoint"
 
 
-# check if .mat directoy output exists and if so delete it
+# check if .mat directory output exists and if so delete it
 if [ -d ${invol}*.mat ]
 	then 
 		echo "cleaning up existing .mat file output" 
@@ -123,7 +133,7 @@ echo "Mean FD (Power et al., 2012) was ${fd_mean}"
 echo "Mean DVARS (Power et al, 2012) was ${dvars_mean}"
 ```
 
-Interpretation of relative motion displacement estimates: </br>
+**Interpretation of relative motion displacement estimates:** </br>
 
 **Jenkinson et al., 2002**
 * Differentiating head realignment parameters across frames yields a six dimensional timeseries that represents instantaneous head motion. 
@@ -134,6 +144,15 @@ Interpretation of relative motion displacement estimates: </br>
 * Rotational displacements are converted from degrees to millimeters by calculating displacement on the surface of a sphere of radius 50 mm.
 * Assumes that all voxels undergo equivalent displacements along the sphere in response to a given rotation
 * These tend to be about twice as large as the Jenkinson estimates
+
+
+**Step 3: View motion trace plots to assess severity of head motion**
+
+The script we just ran made `.png` files to summarize motion and image intensity chagnes over time. You can open these from the terminal with a `loop` command like this: <br>
+```
+for p in mot_*.png; do eog "$p";done
+```
+
 
 
 
