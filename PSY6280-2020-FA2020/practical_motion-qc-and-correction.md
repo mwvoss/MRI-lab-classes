@@ -142,15 +142,18 @@ echo "Mean DVARS (Power et al, 2012) was ${dvars_mean}"
 * Differentiating head realignment parameters across frames yields a six dimensional timeseries that represents instantaneous head motion. 
 * Rotational displacements are converted from degrees to millimeters by calculating displacement on the surface of a sphere of radius 80 mm.
 * Takes into account the range of voxel displacements over the sphere by computing the root-mean-square (with mean across all intracerebral voxels) of translation (mm) of the voxels before sphere model.
-* This can be output from `mcflirt` with the `-rmsrel` flag, which matches the relative displacement (mm) trace shown together with the absolute displacement as estimated from our `mcflirt` call. This is the same variable referred to as `fdrms` computed by `fsl_motion_outliers`. Compare their traces below:<br>
+* This can be output from `mcflirt` with the `-rmsrel` flag, which matches the relative displacement (mm) trace shown together with the absolute displacement as estimated from our `mcflirt` call. This is the same variable referred to as `fdrms` computed by `fsl_motion_outliers`. Compare their traces below:</br>
 
 ![image-relrms](images/motion_mot-disp.png)
+</br>
 ![image-fdrms](images/motion_mot-fdrms.png)
+
+</br>
 
 **Power et al., 2012**
 * Rotational displacements are converted from degrees to millimeters by calculating displacement on the surface of a sphere of radius 50 mm.
 * Assumes that all voxels undergo equivalent displacements along the sphere in response to a given rotation.
-* These tend to be about twice as large as the Jenkinson estimates, and we indeed replicate this trend as shown by the trace below: <br>
+* These tend to be about twice as large as the Jenkinson estimates, and we indeed replicate this trend as shown by the trace below: </br>
 ![image-fd](images/motion_mot-fd.png)
 </br>
 
@@ -163,10 +166,10 @@ for p in mot_*.png; do eog "$p";done
 
 **B. Interpretation of FSL-derived volume-to-volume bold intensity estimates** <br> 
 * `DVARS` is the root-mean-square intensity difference of volume N to volume N+1 as proposed by Power et al., 2012. This quantifies the rate of volume-to-volume change in the BOLD signal. Higher values indicate more instances of rapid changes in BOLD signal intensity, which is an indicator of more volumes corrupted by motion. So higher is bad.
-* Think of this as an intensity-based metric that matches the FD volume-displacement based metric shown above. For higher motion subjects when the quality of motion correction is highly variable, then an intensity based estimate could be more reliable.
+* Think of this as an intensity-based metric that matches the FD volume-displacement based metric shown above. For higher motion subjects when the quality of motion correction is highly variable, then an intensity based estimate could be more reliable.</br>
 ![image-dvars](images/motion_mot-dvars.png)
 
-
+</br>
 
 **C. Interpretation of MRIQC-derived image quality metrics relevant to motion** </br>
 * [MRIQC](https://mriqc.readthedocs.io/en/stable/) is a tool developed by the Poldrack Lab at Stanford University for use at the Center for Reproducible Neuroscience (CRN), as well as for open-source software distribution. We will not run this tool on our data today, but it's a great tool for generating nice summary reports of your data for inspection.
@@ -176,12 +179,15 @@ for p in mot_*.png; do eog "$p";done
 * Similar to FSL output, MRIQC generates traces of both volume-to-volume displacement and intensity changes:
 ![image-mriqc](images/motion_mriqc-traces.png)
 <br>
-* MRIQC also generates a "carpet plot" which shows the time series for all voxels within the brain mask. Voxels are grouped into cortical (blue) and subcortical (orange) gray matter, cerebellum (green), and white matter and CSF (red), indicated by the color map on the left-hand side. An ideal carpet plot looks like this, where there no globl intensity shifts through columns, which would be a sign of affecting all voxels in a global manner. 
-![image-mriqc](images/motion_mriqc-carpet.png)
-* As comparison, below are traces and corresponding carpet plot for medium and high-motion data sets from our lab: <br>
 
+* **MRIQC also generates a carpet plot** which shows the time series for all voxels within the brain mask. Voxels are grouped into cortical (blue) and subcortical (orange) gray matter, cerebellum (green), and white matter and CSF (red), indicated by the color map on the left-hand side. An ideal carpet plot looks like this, where there no globl intensity shifts through columns, which would be a sign of affecting all voxels in a global manner. 
+![image-mriqc](images/motion_mriqc-carpet.png)
+* As comparison, below are traces and corresponding carpet plot for medium and high-motion data sets from our lab: </br>
+</br>
 **Medium motion**
 ![image-mriqc](images/motion_mriqc-carpet-medmotion.png)
+
+</br>
 
 **High motion**
 ![image-mriqc](images/motion_mriqc-carpet-himotion.png)
