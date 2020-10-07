@@ -184,6 +184,7 @@ for p in mot_*.png; do eog "$p";done
 ![image-mriqc](images/motion_mriqc-carpet.png)
 * As comparison, below are traces and corresponding carpet plot for medium and high-motion data sets from our lab: </br>
 </br>
+
 **Medium motion**
 ![image-mriqc](images/motion_mriqc-carpet-medmotion.png)
 
