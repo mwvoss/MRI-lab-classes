@@ -138,7 +138,7 @@ echo "Mean DVARS (Power et al, 2012) was ${dvars_mean}"
 
 **A. Interpretation of motion displacement estimates** </br>
 
-**Jenkinson et al., 2002**
+**Jenkinson et al., 2002** [pdf](https://www.dropbox.com/s/4da5lpor1wbkh9i/Jenkinson-2002-Improved%20Optimization%20for%20the%20R.pdf?dl=0)
 * Differentiating head realignment parameters across frames yields a six dimensional timeseries that represents instantaneous head motion. 
 * Rotational displacements are converted from degrees to millimeters by calculating displacement on the surface of a sphere of radius 80 mm.
 * Takes into account the range of voxel displacements over the sphere by computing the root-mean-square (with mean across all intracerebral voxels) of translation (mm) of the voxels before sphere model.
@@ -150,7 +150,7 @@ echo "Mean DVARS (Power et al, 2012) was ${dvars_mean}"
 
 </br>
 
-**Power et al., 2012**
+**Power et al., 2012** [pdf](https://www.dropbox.com/s/v4vsop6i4g8xf9h/PowerNeuroImage2012.pdf?dl=0)
 * Rotational displacements are converted from degrees to millimeters by calculating displacement on the surface of a sphere of radius 50 mm.
 * Assumes that all voxels undergo equivalent displacements along the sphere in response to a given rotation.
 * These tend to be about twice as large as the Jenkinson estimates, and we indeed replicate this trend as shown by the trace below: </br>
