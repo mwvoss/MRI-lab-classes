@@ -36,6 +36,7 @@ Using the code below, make a bash script called `run_mcflirt.sh` to run motion c
         * define the input volume as a variable named `invol`
             * how can this be used later in the script?
             * why would we do this?
+            * there are two lines still "hard-coded" - which are they?
         * define the output of a command as a variable
             * find one example
         * expression of variables within `echo` commands
