@@ -200,7 +200,8 @@ for p in mot_*.png; do eog "$p";done
 
 **Lab Homework** 
 
-* Download a subject with two runs of fmri data along with their MRIQC reports
+* Download two additional subjects from the ds003030 dataset with their MRIQC reports
+    * Link [coming]
     * Interpret results to order their runs from lowest to highest severity of motion
 
 * Look at three functional imaging papers in your field and evaluate the following questions about how they delt with slice-timing and motion:
