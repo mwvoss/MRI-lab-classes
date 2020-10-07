@@ -198,19 +198,17 @@ for p in mot_*.png; do eog "$p";done
 
 
 
-
-
-
-
 **Lab Homework** 
 
-* Download another subject with their mriqc plot
-    * interpret carpet plot and motion profile
-* Describe the difference between a volume displacement metric and a signal intensity metric
-    * Use a metaphor to describe how each captures distinct aspects of motion in the data
-* Look at five papers in your field and evaluate the following questions about how they delt with motion:
-    * Was any data discarded due to motion, and if so, based on what criteria?
-    * Was the tool used for motion correction specified?
+* Download a subject with three runs of fmri data along with their MRIQC reports
+    * Interpret results to order their runs from lowest to highest severity of motion
+
+* Look at three functional imaging papers in your field and evaluate the following questions about how they delt with slice-timing and motion:
+    * Was slice-timing conducted? Did authors give a rationale of why or why not? 
+    * Was any subject data discarded due to motion, and if so, based on what criteria?
+    * Was the tool used for motion correction specified and if so, what tool was used?
+
+
 
 
 
