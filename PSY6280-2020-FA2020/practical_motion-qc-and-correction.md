@@ -180,8 +180,9 @@ for p in mot_*.png; do eog "$p";done
 ![image-mriqc](images/motion_mriqc-traces.png)
 <br>
 
-* **MRIQC also generates a carpet plot** which shows the time series for all voxels within the brain mask. Voxels are grouped into cortical (blue) and subcortical (orange) gray matter, cerebellum (green), and white matter and CSF (red), indicated by the color map on the left-hand side. An ideal carpet plot looks like this, where there no globl intensity shifts through columns, which would be a sign of affecting all voxels in a global manner. 
+* **MRIQC also generates a carpet plot** which shows the time series for all voxels within the brain mask. Voxels are grouped into cortical (blue) and subcortical (orange) gray matter, cerebellum (green), and white matter and CSF (red), indicated by the color map on the left-hand side. 
 ![image-mriqc](images/motion_mriqc-carpet.png)
+* An ideal carpet plot looks like this, where there no globl intensity shifts through columns, which would be a sign of affecting all voxels in a global manner. 
 * As comparison, below are traces and corresponding carpet plot for medium and high-motion data sets from our lab: </br>
 </br>
 
