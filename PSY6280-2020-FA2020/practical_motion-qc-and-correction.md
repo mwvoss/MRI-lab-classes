@@ -159,7 +159,7 @@ You can open a set of `.png` files from the terminal with a `loop` command like 
 ```
 for p in mot_*.png; do eog "$p";done
 ```
-
+</br>
 B. **Interpretation of FSL-derived volume-to-volume bold intensity estimates** </br>
 * `DVARS` is the root-mean-square intensity difference of volume N to volume N+1 as proposed by Power et al., 2012. This quantifies the rate of volume-to-volume change in the BOLD signal. Higher values indicate more instances of rapid changes in BOLD signal intensity, which is an indicator of more volumes corrupted by motion. So higher is bad.
 * Think of this as an intensity-based metric that matches the FD volume-displacement based metric shown above. For higher motion subjects when the quality of motion correction is highly variable, then an intensity based estimate could be more reliable.
@@ -169,7 +169,7 @@ B. **Interpretation of FSL-derived volume-to-volume bold intensity estimates** <
 
 C. **Interpretation of MRIQC-derived image quality metrics relevant to motion** </br>
 * [MRIQC](https://mriqc.readthedocs.io/en/stable/) is a tool developed by the Poldrack Lab at Stanford University for use at the Center for Reproducible Neuroscience (CRN), as well as for open-source software distribution. We will not run this tool on our data today, but it's a great tool for generating nice summary reports of your data for inspection.
-* Download the MRIQC report for sub-01's functional data [here](https://www.dropbox.com/s/opmxj8y5o37qyra/sub-01_task-FlickeringCheckerBoard_run-1_bold.html?dl=0)
+* Download the MRIQC report for sub-01's functional data [here](https://www.dropbox.com/s/wtydb4oclinklak/sub-01_MRIQC_%20individual%20bold%20report.pdf?dl=0)
 
 
 
