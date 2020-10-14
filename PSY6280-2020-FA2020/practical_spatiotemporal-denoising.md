@@ -31,18 +31,18 @@ We will continue working with the data from `sub-01` in `ds003030` during class 
 
 
 **Step 2: Open the melodic web report for overview of results** 
-    * Within the file browser, navigate to the `melodic.ica` directory and open the `report.html` file with a web browser
-    * Break-out questions
-        * `Pre-Stats` page: is relative motion more similar to the FD Jenkinson or FD Power metric?
-        * `Registration` page: look through overlays to evaluate alignment of functional data to MNI. Any concerns?
-        * `Log` page: here's where everything that was run is documented, starting with `Initialisation` you can see the initial input was the raw nifti bold image without preprocessing. What file is the input to melodic processing?
-        * Finally, the main results are shown in the `ICA` page: take a look with your group and discuss questions from your exploration. We will come back and review understanding as a group.
+* Within the file browser, navigate to the `melodic.ica` directory and open the `report.html` file with a web browser
+* Break-out questions
+    * `Pre-Stats` page: is relative motion more similar to the FD Jenkinson or FD Power metric?
+    * `Registration` page: look through overlays to evaluate alignment of functional data to MNI. Any concerns?
+    * `Log` page: here's where everything that was run is documented, starting with `Initialisation` you can see the initial input was the raw nifti bold image without preprocessing. What file is the input to melodic processing?
+    * Finally, the main results are shown in the `ICA` page: take a look with your group and discuss questions from your exploration. We will come back and review understanding as a group.
 </br>
 
 
  **Step 3: Open melodic-derived components in fsleyes** 
-    * Now let's see how to view the component output interactively in fsleyes to support manual labeling of components as signal or noise
-    * In the terminal, move yourself to the `melodic.ica` directory: `cd ~/fmriLab/ds003030/derivatives/func/sub-01/melodic/melodic.ica`
-    * Open fsleyes with the melodic scene setting: `fsleyes --scene melodic -ad filtered_func_data.ica filtered_func_data.ica/melodic_IC.nii.gz`
-    * You should see something like below: <br>
+* Now let's see how to view the component output interactively in fsleyes to support manual labeling of components as signal or noise
+* In the terminal, move yourself to the `melodic.ica` directory: `cd ~/fmriLab/ds003030/derivatives/func/sub-01/melodic/melodic.ica`
+* Open fsleyes with the melodic scene setting: `fsleyes --scene melodic -ad filtered_func_data.ica filtered_func_data.ica/melodic_IC.nii.gz`
+* You should see something like below: <br>
 ![melodicview](images/denoising_melodicView.png)
