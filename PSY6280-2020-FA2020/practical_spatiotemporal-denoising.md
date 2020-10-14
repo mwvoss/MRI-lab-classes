@@ -61,3 +61,12 @@ We will continue working with the data from `sub-01` in `ds003030` during class 
 </br>
 
  **Step 3: Label components in fsleyes** 
+* Work with your **break-out group** to label each component minimally as signal or noise, and within the melodic classification GUI select a more specific noise label as you're comfortable
+* Each group will get a link to a google sheet where you can list your classification of signal vs. noise   
+    * please make an entry as you progress through the components, Michelle will use progress on the sheets to see when we're ready to come back together 
+* When we come back together we'll compare ratings and discuss "score-driving" features 
+* Resources: 
+    * Use the decision tree shown in Griffanti et al to step through each component in space, time, and frequency: 
+    ![decision-tree](images/denoising_decision-tree.png)
+    * If you are less familiar with activation patterns considered "signal" based on the literature, use the spatial maps shown in the [Smith et al., paper](https://github.com/mwvoss/MRI-lab-classes/blob/master/PSY6280-2020-FA2020/pdfs/Smith-2009-BrainNets.pdf) as a complementary resource.  
+
