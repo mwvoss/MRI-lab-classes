@@ -8,7 +8,7 @@ The purpose of this lab is to get hands-on experience interpreting the output of
 **By the end of this practical you should be able to:** <br/>
 * [ ] interpret the output of FSL's [MELODIC](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MCFLIRT) tool for a single-subject ICA analysis
 * [ ] open MELODIC-estimated components within fsleyes's melodic scene viewer
-* [ ] understand the process of manually labeling components as signal or noise using a conservative "innocent until proven guilty" criteria such as outlined in [Griffanti et al., 2017]((pdfs/Griffanti-2017-ICA.pdf))
+* [ ] understand the process of manually labeling components as signal or noise using a conservative "innocent until proven guilty" criteria such as outlined in [Griffanti et al., 2017](https://github.com/mwvoss/MRI-lab-classes/tree/master/PSY6280-2020-FA2020/pdfs/Griffanti-2017-ICA.pdf)
 * [ ] understand the implications of spatial smoothing when applying single-subject ICA for denoising
 
 
