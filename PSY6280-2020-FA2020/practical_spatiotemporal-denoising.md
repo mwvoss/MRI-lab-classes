@@ -9,7 +9,6 @@ The purpose of this lab is to get hands-on experience interpreting the output of
 * [ ] interpret the output of FSL's [MELODIC](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MCFLIRT) tool for a single-subject ICA analysis
 * [ ] open MELODIC-estimated components within fsleyes's melodic scene viewer
 * [ ] understand the process of manually labeling components as signal or noise using a conservative "innocent until proven guilty" criteria such as outlined in [Griffanti et al., 2017](https://github.com/mwvoss/MRI-lab-classes/tree/master/PSY6280-2020-FA2020/pdfs/Griffanti-2017-ICA.pdf)
-* [ ] understand the implications of spatial smoothing when applying single-subject ICA for denoising
 <br/>
 
 **Access FastX** through the remote login: <br>
@@ -19,7 +18,7 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 
 **Lab data** <br>
 We will continue working with the data from `sub-01` in `ds003030` during class time. Because melodic is a blind source separation process, the order of the componentns can be slightly different each time it is run on the same dataset. For our group work it will be easier to all have the same output, so you'll download melodic output and we'll focus on interpretation.
-
+</br>
 
 **Step 1: Prepare a new derivatives directory for melodic output**
 * At the terminal, move yourself to the `func` derivatives directory: `cd ~/fmriLab/ds003030/derivatives/func/sub-01/`
@@ -66,6 +65,10 @@ We will continue working with the data from `sub-01` in `ds003030` during class 
     * please make an entry as you progress through the components, Michelle will use progress on the sheets to see when we're ready to come back together 
 * When we come back together we'll compare ratings and discuss "score-driving" features 
 * Resources: 
+    * Reminder of frequency range for common physiological noise sources:
+        * Respiration: ~.1 - .5 Hz
+        * Heart rate: ~.6 - 1.2 Hz
+        * Respiration depth: ~ 0 – .03 Hz
     * Use the decision tree shown in Griffanti et al to step through each component in space, time, and frequency: 
     ![decision-tree](images/denoising_decision-tree.png)
     * If you are less familiar with activation patterns considered "signal" based on the literature, use the spatial maps shown in the [Smith et al., paper](https://github.com/mwvoss/MRI-lab-classes/blob/master/PSY6280-2020-FA2020/pdfs/Smith-2009-BrainNets.pdf) as a complementary resource.  
