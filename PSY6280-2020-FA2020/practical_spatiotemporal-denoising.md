@@ -18,10 +18,17 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 
 
 **Lab data** <br>
-We will continue working with the data from `sub-01` in `ds003030` during class time.
+We will continue working with the data from `sub-01` in `ds003030` during class time. Because melodic is a blind source separation process, the order of the componentns can be slightly different each time it is run on the same dataset. For our group work it will be easier to all have the same output, so you'll download melodic output and we'll focus on interpretation.
 
 
 **Step 1: Prepare a new derivatives directory for motion correction**
 * At the terminal, move yourself to the `func` derivatives directory: `cd ~/fmriLab/ds003030/derivatives/func/sub-01/`
-    * 
+    * Download melodic derivatives folder: `wget -O melodic.tar.gz https://www.dropbox.com/s/1r3iw2wyswlr8ls/melodic.tar.gz?dl=0`
+    * Unpack: `tar -xvf melodic.tar.gz`
+    * Remove uneeded tar zip: `rm melodic.tar.gz`
+    * You now have melodic deriviatives for `sub-01`, which includes output of single-subject ICA on their flickering checkerboard bold data both with (`melodic.ica`) and without spatial smoothing (`melodic_no-smooth.ica`).
  </br>
+
+
+ **Step 2: Open melodic-derived components in fsleyes** 
+    * We'll start with the spatially smoothed data (FWHM was set to 5 mm)
