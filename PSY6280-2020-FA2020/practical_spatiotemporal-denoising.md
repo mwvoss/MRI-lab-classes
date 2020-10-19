@@ -73,3 +73,12 @@ We will continue working with the data from `sub-01` in `ds003030` during class 
     ![decision-tree](images/denoising_decision-tree.png)
     * If you are less familiar with activation patterns considered "signal" based on the literature, use the spatial maps shown in the [Smith et al., paper](https://github.com/mwvoss/MRI-lab-classes/blob/master/PSY6280-2020-FA2020/pdfs/Smith-2009-BrainNets.pdf) as a complementary resource.  
 
+
+</br>
+
+**Discussion: ICA-AROMA output**
+* At the terminal, move yourself to the `func` derivatives directory: `cd ~/fmriLab/ds003030/derivatives/func/sub-01/`
+    * Download melodic derivatives folder: `wget -O ica_aroma_new.tar.gz https://www.dropbox.com/s/s2skrddqbsiwpzl/ica_aroma_new.tar.gz?dl=0`
+    * Unpack: `tar -xvf ica_aroma_new.tar.gz`
+    * Remove uneeded tar zip: `rm ica_aroma_new.tar.gz`
+    * You now have output from ica-aroma in your func deriviatives for `sub-01`, which includes output of single-subject ICA and classification of output by aroma.
