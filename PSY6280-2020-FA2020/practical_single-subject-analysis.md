@@ -20,6 +20,9 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
     * A `Highpass` temporal filter will let high frequency signals pass through and filter out frequencies lower than the filter setting. The setting here specifies the duration in seconds for one full cycle of a condition to occur, and frequencies `any lower` will be removed.
         * For this data we can set the `High pass filter cutoff(s)` to as low as `40s`
         * This is the time it takes for a full cycle of one condition to occur (checker(20s)-music(20s)-checker(20s)-etc..)
+    * Example of completed setup: 
+    ![inputdata](images/practical_feat_singlesubject_input-data.png)
+
 
 * Pre-stats
     * Keep `MCFLIRT` on for motion correction
@@ -29,6 +32,8 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
     * Keep intensity normalization as `off`
     * Keep `Highpass` set as on
     * Keep `MELODIC ICA` set as off
+    * Example of completed setup:
+    ![prestats](images/practical_feat_singlesubject_prestats.png)
 
 * Registration tab
     * Select `Main structural image` and select our skull-stripped T1 image as input
@@ -36,6 +41,8 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
     * For purposes of speed to prioritize focus on setting up the first-level model and viewing results
         * Change the registration of the `Main image` to `12 DOF`
         * Keep `Nonlinear` registration turned off
+    * Example of completed setup:
+    ![registration](images/practical_feat_singlesubject_registration.png)
 
 * Stats tab
     * Keep `FILM prewhitening` on
@@ -47,12 +54,16 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
             * Select task timing file for the checkerboard stimulus created above
             * Set `Convolution` to `Gamma` and leave the HRF parameter settings
             * Keep `temporal derivative` on and applied
+            * Example: 
+            ![ev1](images/practical_feat_singlesubject_EV1.png)
         * Specify `EV2` as the music stimulus
             * Replicate settings for EV1
             * Use task timing file for music stimulus
         * Contrasts & F-tests tab
             * For this design, we can only contrast relative activation for each condition
             * These contrasts would be set as shown below
+            ![contrasts](images/practical_feat_singlesubject_contrasts.png)
+        
 
 * Post-stats tab
     * Keep all default settings on
@@ -60,16 +71,18 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 
 * Click Go. When it's finished, the results will appear within your feat directory. 
     * Your html report will then include output of brain activation maps as previewed below. We will walk through the contents of the report in class.
+    ![output-html](images/practical_feat_singlesubject_output-html.png)
 
 * Using `fsleyes` will allow us to view the results more interactively:
     * Use the html report to locate the directory where the activation maps are on your computer
     * Use the terminal to move yourself there: `cd ~/fmriLab/ds003030/derivatives/func/sub-01/feat.feat`
-    * Open fsleyes through the terminal with settings for viewing FEAT output: `fsleyes -s feat filtered_func_data.nii.gz stats/zstat1`
+    * Open fsleyes through the terminal with settings for viewing FEAT output: `fsleyes -s feat filtered_func_data.nii.gz thresh_zstat1`
     * You should see a display like below in `fsleyes`. Clicking on the buttons with arrows in the column labeled `Z Max location` will move your cursor to the location of that peak in brain activation. With this interactive table open, you can also view your activation maps using the `Lightbox` view we previewed when learning about `fsleyes`. Give it a try!
     * For a full description of plotting the model and data timeseries, see the [fsleyes documentation on viewing FEAT output](https://users.fmrib.ox.ac.uk/~paulmc/fsleyes/userdoc/latest/feat_mode.html)
 </br>
 
-![feat-in-fsleyes](images/single-subject_feat-in-fsleyes.png)
+![output-fsleyes](practical_feat_singlesubject_output-fsleyes.png)
+
 
 * Before next class, repeat the same steps on `sub-02` and `sub-03`
     * First, you will need to run skull-stripping with `bet`
