@@ -98,8 +98,8 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 </br>
 
 **Before next class**, repeat the same steps on `sub-02` and `sub-03`
-    * First, you will need to run skull-stripping with `bet`
-        * Follow steps in this [lab](https://github.com/mwvoss/MRI-lab-classes/blob/master/PSY6280-2020-FA2020/practical_structural-image-bet-and-qc.md) to create `anat` derivatives with their corresponding `sub-*_T1w_brain.nii.gz` images
+* First, you will need to run skull-stripping with `bet`
+* Follow steps in this [lab](https://github.com/mwvoss/MRI-lab-classes/blob/master/PSY6280-2020-FA2020/practical_structural-image-bet-and-qc.md) to create `anat` derivatives with their corresponding `sub-*_T1w_brain.nii.gz` images
 
 
 
