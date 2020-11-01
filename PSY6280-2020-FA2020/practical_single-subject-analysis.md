@@ -16,7 +16,7 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
     * To unzip in the terminal: `tar -xvf beh.tar.gz`
     * To remove `tar.gz` file: `rm beh.tar.gz`
     * Let's take a look inside this directory to understand what's there
-        * Learn more about creating event timing files in FSL's expected format [here](https://andysbrainbook.readthedocs.io/en/latest/fMRI_Short_Course/Statistics/05_Creating_Timing_Files.html), which includes a bash script that can be used.
+        * Learn more about creating event timing files in FSL's expected format [here](https://andysbrainbook.readthedocs.io/en/latest/fMRI_Short_Course/Statistics/05_Creating_Timing_Files.html), which includes a bash script that can be used for converting from bids to the 3 column format used in FEAT.
     * This [script](https://github.com/bids-standard/bidsutils/tree/master/BIDSto3col) can also be used
 
 </br>
