@@ -15,6 +15,9 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
     * Copy/paste the following to your terminal to download the `beh` directory: `wget -O beh.tar.gz https://www.dropbox.com/s/c32xqohhqspart7/beh.tar.gz?dl=0`
     * To unzip in the terminal: `tar -xvf beh.tar.gz`
     * To remove `tar.gz` file: `rm beh.tar.gz`
+    * Let's take a look inside this directory to understand what's there
+        * Learn more about creating event timing files in FSL's expected format [here](https://andysbrainbook.readthedocs.io/en/latest/fMRI_Short_Course/Statistics/05_Creating_Timing_Files.html), which includes a bash script that can be used.
+    * This [script](https://github.com/bids-standard/bidsutils/tree/master/BIDSto3col) can also be used
 
 </br>
 
