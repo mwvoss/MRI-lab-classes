@@ -14,7 +14,7 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
     * In the terminal, type `fsl` to bring up the GUI
     * click on `FEAT FMRI analysis`
     
-* Data tab
+* **Data tab**
     * Click `Select 4D data` and select the full path to our initial functional image `~fmriLab/ds003030/sub-01/func/sub-01_func_sub-01_task-FlickeringCheckerBoard_run-1_bold`
     * Set the `Output directory` to a sub-directory of the `derivtives/func` directory with the folder name of `feat`, such as `~/fmriLab/ds003030/derivatives/func/sub-01/feat`
     * A `Highpass` temporal filter will let high frequency signals pass through and filter out frequencies lower than the filter setting. The setting here specifies the duration in seconds for one full cycle of a condition to occur, and frequencies `any lower` will be removed.
@@ -24,7 +24,7 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
     ![inputdata](images/practical_feat_singlesubject_input-data.png)
 
 
-* Pre-stats
+* **Pre-stats tab**
     * Keep `MCFLIRT` on for motion correction
     * Keep slice timing set as `None`
     * Keep `BET brain extraction` on with selection box shown as yellow
@@ -35,7 +35,7 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
     * Example of completed setup: <br>
     ![prestats](images/practical_feat_singlesubject_prestats.png)
 
-* Registration tab
+* **Registration tab**
     * Select `Main structural image` and select our skull-stripped T1 image as input
     * Keep the `MNI152_T1_2mm_brain` image as our standard space reference
     * For purposes of speed to prioritize focus on setting up the first-level model and viewing results
@@ -44,7 +44,7 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
     * Example of completed setup: <br>
     ![registration](images/practical_feat_singlesubject_registration.png)
 
-* Stats tab
+* **Stats tab**
     * Keep `FILM prewhitening` on
     * Change `Don't Add Motion Parameters` to `Standard Motion Parameters` to add motion paramers to our model
     * Keep `Add additional confound EVs` off
@@ -65,15 +65,15 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
             ![contrasts](images/practical_feat_singlesubject_contrasts.png)
         
 
-* Post-stats tab
+* **Post-stats tab**
     * Keep all default settings on
     * Statistical thresholding is more important for group-level analysis for shorter scans
 
-* Click Go. When it's finished, the results will appear within your feat directory. 
+* **Click Go**. When it's finished, the results will appear within your feat directory. 
     * Your html report will then include output of brain activation maps as previewed below. We will walk through the contents of the report in class. <br>
     ![output-html](images/practical_feat_singlesubject_output-html.png)
 
-* Using `fsleyes` will allow us to view the results more interactively:
+* **View the results more interactively** using `fsleyes`
     * Use the html report to locate the directory where the activation maps are on your computer
     * Use the terminal to move yourself there: `cd ~/fmriLab/ds003030/derivatives/func/sub-01/feat.feat`
     * Open fsleyes through the terminal with settings for viewing FEAT output: `fsleyes -s feat filtered_func_data.nii.gz thresh_zstat1`
@@ -83,8 +83,9 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 
 ![output-fsleyes](images/practical_feat_singlesubject_output-fsleyes.png)
 
+</br>
 
-* Before next class, repeat the same steps on `sub-02` and `sub-03`
+* **Before next class**, repeat the same steps on `sub-02` and `sub-03`
     * First, you will need to run skull-stripping with `bet`
         * Follow steps in this [lab](https://github.com/mwvoss/MRI-lab-classes/blob/master/PSY6280-2020-FA2020/practical_structural-image-bet-and-qc.md) to create `anat` derivatives with their corresponding `sub-*_T1w_brain.nii.gz` images
 
