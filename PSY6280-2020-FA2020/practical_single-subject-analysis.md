@@ -10,7 +10,16 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 <br/>
 
 
-* Move to the root directory for our ds003030 dataset: `cd ~/fmriLab/ds003030/` 
+* **Step 1: Download task onset** files
+    * Move to the derivatives directory: `cd ~/fmriLab/ds003030/derivatives`
+    * Copy/paste the following to your terminal to download the `beh` directory: `wget -O beh.tar.gz https://www.dropbox.com/s/c32xqohhqspart7/beh.tar.gz?dl=0`
+    * To unzip in the terminal: `tar -xvf beh.tar.gz`
+    * To remove `tar.gz` file: `rm beh.tar.gz`
+
+</br>
+
+* **Step 2: Open FEAT GUI** to start task model setup
+    * In the terminal, move to the root directory for our ds003030 dataset: `cd ~/fmriLab/ds003030/` 
     * In the terminal, type `fsl` to bring up the GUI
     * click on `FEAT FMRI analysis`
 
@@ -83,7 +92,7 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 
 </br>
 
-* **View the results more interactively** using `fsleyes`
+* **Step 3: View the results more interactively** using `fsleyes`
     * Use the html report to locate the directory where the activation maps are on your computer
     * Use the terminal to move yourself there: `cd ~/fmriLab/ds003030/derivatives/func/sub-01/feat.feat`
     * Open fsleyes through the terminal with settings for viewing FEAT output: `fsleyes -s feat filtered_func_data.nii.gz thresh_zstat1`
@@ -102,5 +111,20 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 * Follow steps in this [lab](https://github.com/mwvoss/MRI-lab-classes/blob/master/PSY6280-2020-FA2020/practical_structural-image-bet-and-qc.md) to create `anat` derivatives with their corresponding `sub-*_T1w_brain.nii.gz` images
 
 
+</br>
 
+**If you need to download `sub-02` and `sub-03` nifti data**:
+
+*  Change directories from your home directory to `fmriLab` with the command: `cd ~/fmriLab/ds003030`
+*  Download new subjects:
+    * Steps to download `sub-02`
+        * `wget -O sub-02.tar.gz https://www.dropbox.com/s/5q3zntfbmtsah3t/sub-02.tar.gz?dl=0`
+        * `tar -xvf sub-02.tar.gz`
+        * `rm sub-02.tar.gz`
+
+
+    * Repeat to download `sub-03`
+        * `wget -O sub-03.tar.gz https://www.dropbox.com/s/wpemy4fixqpt7ru/sub-03.tar.gz?dl=0`
+        * `tar -xvf sub-03.tar.gz`
+        * `rm sub-03.tar.gz`
 
