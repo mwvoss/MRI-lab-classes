@@ -81,7 +81,7 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
     * For a full description of plotting the model and data timeseries, see the [fsleyes documentation on viewing FEAT output](https://users.fmrib.ox.ac.uk/~paulmc/fsleyes/userdoc/latest/feat_mode.html)
 </br>
 
-![output-fsleyes](practical_feat_singlesubject_output-fsleyes.png)
+![output-fsleyes](images/practical_feat_singlesubject_output-fsleyes.png)
 
 
 * Before next class, repeat the same steps on `sub-02` and `sub-03`
