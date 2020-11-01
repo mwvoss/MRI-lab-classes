@@ -32,7 +32,7 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
     * Keep intensity normalization as `off`
     * Keep `Highpass` set as on
     * Keep `MELODIC ICA` set as off
-    * Example of completed setup:
+    * Example of completed setup: <br>
     ![prestats](images/practical_feat_singlesubject_prestats.png)
 
 * Registration tab
@@ -41,7 +41,7 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
     * For purposes of speed to prioritize focus on setting up the first-level model and viewing results
         * Change the registration of the `Main image` to `12 DOF`
         * Keep `Nonlinear` registration turned off
-    * Example of completed setup:
+    * Example of completed setup: <br>
     ![registration](images/practical_feat_singlesubject_registration.png)
 
 * Stats tab
@@ -54,14 +54,14 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
             * Select task timing file for the checkerboard stimulus created above
             * Set `Convolution` to `Gamma` and leave the HRF parameter settings
             * Keep `temporal derivative` on and applied
-            * Example: 
+            * Example: <br>
             ![ev1](images/practical_feat_singlesubject_EV1.png)
         * Specify `EV2` as the music stimulus
             * Replicate settings for EV1
             * Use task timing file for music stimulus
         * Contrasts & F-tests tab
             * For this design, we can only contrast relative activation for each condition
-            * These contrasts would be set as shown below
+            * These contrasts would be set as shown below: <br>
             ![contrasts](images/practical_feat_singlesubject_contrasts.png)
         
 
@@ -70,7 +70,7 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
     * Statistical thresholding is more important for group-level analysis for shorter scans
 
 * Click Go. When it's finished, the results will appear within your feat directory. 
-    * Your html report will then include output of brain activation maps as previewed below. We will walk through the contents of the report in class.
+    * Your html report will then include output of brain activation maps as previewed below. We will walk through the contents of the report in class. <br>
     ![output-html](images/practical_feat_singlesubject_output-html.png)
 
 * Using `fsleyes` will allow us to view the results more interactively:
