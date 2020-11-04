@@ -1,6 +1,7 @@
 **By the end of this practical you should be able to:** <br/>
-* [ ] use the FEAT GUI to create a group-level map of task-related BOLD activation <br/>
+* [ ] use the [FEAT](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT/UserGuide#Group_Statistics) GUI to create a group-level map of task-related BOLD activation <br/>
 * [ ] locate and understand results using the html reports and fsleyes <br/>
+* [ ] understand how to report your results in a table and/or figure 
 <br/>
 
 **Access FastX** through the remote login: <br>
@@ -25,12 +26,13 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 *  Click to `Select FEAT directories` and select each of your `feat.feat` folders: <br/>
 ![feat-group-inputs](images/practical_group-analysis_feat-checker-inputs.png)
 
-*  Keep `Use lower-level copes` as default, these are the five contrasts we set for the single-subject analyses
+*  Keep `Use lower-level copes` as default, these are the two contrasts we set for the single-subject analyses
 *  Specify output directory to be in derivatives with the name `feat_group-n3_fixed`: <br/>
 ![feat-group-outputdir](images/practical_group-analysis_checker-feat-group-outputdir.png)
 <br/>
 
 **Setup group model on `Stats` tab**: <br/>
+* The full [FEAT User Guide](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT/UserGuide#Group_Statistics) specifies options for a wide range fo statistical models
 *  Select `Fixed effects`, which computes an average generalizable to only this set of participants. This is most appropriate if you have less than 10 subjects of pilot data.
 *  Select `Model setup wizard` and keep the default of `single-group average` and click `Process`: <br/>
 ![feat-model-setup-wizard-single-group](images/group-analysis_feat-model-setup-wizard-single-group.png) 
