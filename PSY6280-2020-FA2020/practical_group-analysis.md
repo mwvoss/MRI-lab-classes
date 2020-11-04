@@ -105,6 +105,7 @@ At the end of a task-activation group analysis our statistical maps are in a sta
 * The Organization for Human Brain Mapping formed a  Committee on Best Practices in Data Analysis and Sharing (COBIDAS), who published best practices for reporting fMRI/MRI results in their [COBIDAS report](http://www.humanbrainmapping.org/files/2016/COBIDASreport.pdf).
     * Section 6.3 on _Mass Univariate Modelling_ describes best practices for reporting results from these analyses in posters and papers
     * Sharing the full statistical parametric maps, both thresholded and unthresholded, is highly encouraged. The repository [NeuroVault](https://neurovault.org/) is well-accepted, and you can also share on Open Science Framework and/or github with other shared study materials.
+    * Complete tables empowers meta-analytic tools like [NeuroSynth](https://neurosynth.org/locations/) to retrieve and add the statistical maxima in your tables to their database 
 * Links to several examples:
     * [Voss et al., Neurobiology of Aging (Table 1)](https://github.com/mwvoss/MRI-lab-classes/blob/master/PSY6280-2020-FA2020/pdfs/Voss-2018-Striking%20a%20chord%20with%20healthy%20aging_.pdf)
     * [Ritchey et al., Neuropsychologia, (Table 2)](https://github.com/mwvoss/MRI-lab-classes/blob/master/PSY6280-2020-FA2020/pdfs/Ritchey-2019-Dissociable%20medial%20temporal%20pathw.pdf)
