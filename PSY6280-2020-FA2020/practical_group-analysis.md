@@ -84,6 +84,15 @@ At the end of a task-activation group analysis our statistical maps are in a sta
 
 ![feat-group-cluster-output3](images/practical_group-analysis_feat-atlas-view.png)
 
+<br/>
+
+You can create figures of your results for posters, talks, papers, grants, using these fsleyes tools: 
+* View -> Lightbox View 
+    * Adjust slice spacing and plane
+    * Click the _wrench_ icon in the top left to access advanced control settings, which gives you the option to turn on a colorbar
+    * Adjust the minimum Z statistic shown on the map in fsleyes to match your statistical threshold, so that the colorbar minimum reflects your statistical thresholding
+    * Use the camera icon to take a screenshot, or any other tool you prefer for screenshots.
+
 
 </br>
 
