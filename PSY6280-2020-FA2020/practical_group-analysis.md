@@ -41,10 +41,13 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 <br/>
 
 **Post-stats tab**: this is where we set our thresholds for statistical significance
-* Thresholding options
+* Thresholding options given within FEAT:
     * **Uncorrected**: this creates a voxel-level threshold _without_ correcting for multiple comparisons (don't do it)
     * **Voxel**: corrects for multiple comparisons in a bonferroni style, but with smoothness of the image accounted for (not common)
     * **Cluster**: thresholding is applied to the Z-statistics at the level specified and then remaining contiguous clusters are evaluated on the probability a cluster that large would be seen if there was no effect (well-accepted threshold: Z>3.1, p<.05, based on [Eklund et al., 2016](https://github.com/mwvoss/MRI-lab-classes/blob/master/PSY6280-2020-FA2020/pdfs/Eklund-2016-Cluster%20failure_%20Why%20fMRI%20inferenc.pdf)). 
+    * Note more options are available in the command-line [cluster](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Cluster) program
+    * FSL also offers thresholding of 3D statistical maps based on False Discovery Rate (FDR) with their command-line [fdr](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDR) program
+
 <br/>
 
 **Click `Go`**: 
@@ -82,3 +85,12 @@ At the end of a task-activation group analysis our statistical maps are in a sta
 ![feat-group-cluster-output3](images/practical_group-analysis_feat-atlas-view.png)
 
 
+</br>
+
+**How would we report these results in a paper?**  <br>
+* The Organization for Human Brain Mapping formed a  Committee on Best Practices in Data Analysis and Sharing (COBIDAS), who published best practices for reporting fMRI/MRI results in their [COBIDAS report](http://www.humanbrainmapping.org/files/2016/COBIDASreport.pdf).
+    * Section 6.3 on _Mass Univariate Modelling_ describes best practices for reporting results from these analyses in posters and papers
+    * Sharing the full statistical parametric maps, both thresholded and unthresholded, is highly encouraged. The repository [NeuroVault](https://neurovault.org/) is well-accepted, and you can also share on Open Science Framework and/or github with other shared study materials.
+* Links to several examples:
+    * Voss et al., Neurobiology of Aging (Table 1)
+    * Ritchey et al., Neuropsychologia, (Table 2)
