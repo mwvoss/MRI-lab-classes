@@ -75,8 +75,10 @@ At the end of a task-activation group analysis our statistical maps are in a sta
 * In the `fsleyes` menu, select `Settings -> Ortho View 1 -> Atlas panel` as shown below. You will now see a new panel in your `fsleyes` layout that links you to the atlases bundled with FSL. 
 </br>
 <br/>
+
 ![feat-group-cluster-output2](images/practical_group-analysis_feat-atlas-menu.png)
 </br>
+
 ![feat-group-cluster-output3](images/practical_group-analysis_feat-atlas-view.png)
 
 
