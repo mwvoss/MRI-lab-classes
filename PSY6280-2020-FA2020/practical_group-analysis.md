@@ -42,9 +42,9 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 
 **Post-stats tab**: this is where we set our thresholds for statistical significance
 * Thresholding options
-    * **Uncorrected**:** this creates a voxel-level threshold _without_ correcting for multiple comparisons (don't do it)
-    * **Voxel**: corrects for multiple comparisons in a bonferonni style, but with smoothness of the image accounted for (not common)
-    * **Cluster**: thresholding is applied to the Z-statistics at the level specified and then remaining contiguous clusters are evaluated on the probability a cluster that large would be seen if there was no effect (well-accepted threshold: Z>3.1, p<.05, based on Eklund et al., 2016). 
+    * **Uncorrected**: this creates a voxel-level threshold _without_ correcting for multiple comparisons (don't do it)
+    * **Voxel**: corrects for multiple comparisons in a bonferroni style, but with smoothness of the image accounted for (not common)
+    * **Cluster**: thresholding is applied to the Z-statistics at the level specified and then remaining contiguous clusters are evaluated on the probability a cluster that large would be seen if there was no effect (well-accepted threshold: Z>3.1, p<.05, based on [Eklund et al., 2016](https://github.com/mwvoss/MRI-lab-classes/blob/master/PSY6280-2020-FA2020/pdfs/Eklund-2016-Cluster%20failure_%20Why%20fMRI%20inferenc.pdf)). 
 <br/>
 
 **Click `Go`**: 
@@ -71,8 +71,8 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 <br/>
 
 At the end of a task-activation group analysis our statistical maps are in a standard template space, which is a coordinate system and anatomical space that is common for all subjects so that we can compare activations across the subjects, to results from other studies using the same common reference space, and to anatomical atlases built in that same reference space.
-    * FSL comes with a [collection of atlases](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Atlases) in the MNI152 standard template space that we can view in `fsleyes` to look up anatomy of activation peaks.
-    * In the `fsleyes` menu, select `Settings -> Ortho View 1 -> Atlas panel` as shown below. You will now see a new panel in your `fsleyes` layout that links you to the atlases bundled with FSL. 
+* FSL comes with a [collection of atlases](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Atlases) in the MNI152 standard template space that we can view in `fsleyes` to look up anatomy of activation peaks.
+* In the `fsleyes` menu, select `Settings -> Ortho View 1 -> Atlas panel` as shown below. You will now see a new panel in your `fsleyes` layout that links you to the atlases bundled with FSL. 
 </br>
 <br/>
 ![feat-group-cluster-output2](images/practical_group-analysis_feat-atlas-menu.png)
