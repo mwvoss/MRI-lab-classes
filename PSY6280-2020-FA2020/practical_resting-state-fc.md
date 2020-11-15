@@ -18,6 +18,10 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 
 **Lab data** <br>
 We will download new data that includes resting state BOLD data from one participant:
+* cd to fmriLab: `cd fmriLab`
+* download data: `wget -O restingState.tar.gz https://www.dropbox.com/s/pc8outqs66hf5m7/restingState.tar.gz?dl=0 `
+* unpack: `tar -xvf restingState.tar.gz`
+* clean-up: `rm restingState.tar.gz`
 
 <br>
 <br>
@@ -65,6 +69,7 @@ We will download new data that includes resting state BOLD data from one partici
 **Step 2: Nuisance regression**
 * we'll start here during class
     * first let us: open our prepared functional data and ROIs for visual inspection and review our goals with nuisance regression
+    * move yourself to where the data are for easier loading in fsleyes: `cd /fmriLab/restingState/derivatives/rsOut`
 * extract timeseries data for nuisance regression
     * use `fslmeants` to make timeseries plots for Nuisance ROIs, from `rsOut` directory:
         * example for global: `fslmeants -i sub-001_func-reg.nii.gz -o nuisanceRegression/global_ts.txt -m ../ROIs/global.nii.gz`
