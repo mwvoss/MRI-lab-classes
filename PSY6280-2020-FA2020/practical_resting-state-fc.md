@@ -89,7 +89,8 @@ We will download new data that includes resting state BOLD data from one partici
             * this is an option in the `3dTcorr1D` function
         * threshold the correlation map, is the seed correlated most strongly with itself?
         * what other regions have a timeseries correlated with the seed?
-    * replicate steps with the left visual ROI
+    * replicate steps with the left visual ROI; below is view of my result for the left visual cortex seed, thresholded at r >.50
+    ![roimap](images/practical_rsfc-roi-lvis.png)
 
 <br>
 <br>
