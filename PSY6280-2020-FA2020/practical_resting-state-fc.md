@@ -51,7 +51,9 @@ We will download new data that includes resting state BOLD data from one partici
     * Skills and tools from this [lab](https://github.com/mwvoss/MRI-lab-classes/blob/master/PSY6280-2020-FA2020/practical_spatial-registration.md)
     * `flirt -in preproc_affine.feat/filtered_func_data.nii.gz -ref ${FSLDIR}/data/standard/MNI152_T1_2mm_brain.nii.gz -out sub-001_func-reg.nii.gz -applyxfm -init preproc_affine.feat/reg/example_func2standard.mat`
 * We now have a functional nifti image that has been preprocessed in the spatial dimension and only needs further filtering in the temporal dimension
+* You also have an `ROIs` directory which contains left and right motor and visual ROIs from the [Van Dijk et al](https://github.com/mwvoss/MRI-lab-classes/blob/master/PSY6280-2020-FA2020/pdfs/Van%20Dijk-2010-Intrinsic%20functional%20connectivit.pdf) paper as shown in the table below. These ROIs were made with the `makeROI.sh` bash script that you can try out for making your own ROIs of a given size and shape (sphere or cube) from MNI coordinates, which is the default reference space. </br>
 
+![roitable](images/practical_rsfc-roi-coords.png)
  <br>
 
 
@@ -94,7 +96,7 @@ We will download new data that includes resting state BOLD data from one partici
 * use supplied `plot_roicorr.R` script to compute correlation matrix and plot as a heat-map
     * at terminal: `Rscript plot_roicorr.R`
     * the result should a `.png` file named `roicorr_heatmap.png` that looks like below:
-
+![roicorrmat](images/practical_rsfc-roicorr_heatmap.png)
 
 
 
