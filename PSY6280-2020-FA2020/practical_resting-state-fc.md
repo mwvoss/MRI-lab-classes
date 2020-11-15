@@ -19,13 +19,17 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 **Lab data** <br>
 We will download new data that includes resting state BOLD data from one participant:
 
+<br>
+<br>
 
 **Step 0: Source AFNI**
 * [AFNI](https://afni.nimh.nih.gov/) is another image processing software that has handy command line functions
 * see instructions [here](https://github.com/mwvoss/MRI-lab-classes/wiki/Setup-FSL-and-AFNI-in-remote-linux-environment) for setting up access to AFNI on the fastX nodes for general use
 
+<br>
+<br>
 
-**Step 1: Prepare functional data with preprocessing**
+**Step 1 (pre-baked): Prepare functional data with preprocessing**
 * This has been completed for sake of time, but derivatives of the process are avaiable in case you'd like to replicate
 * Move yourself to the derivatives directory where we'll put processed data: 
     * `cd /fmriLab/restingState/derivatives/rsOut`
@@ -54,23 +58,26 @@ We will download new data that includes resting state BOLD data from one partici
 * You also have an `ROIs` directory which contains left and right motor and visual ROIs from the [Van Dijk et al](https://github.com/mwvoss/MRI-lab-classes/blob/master/PSY6280-2020-FA2020/pdfs/Van%20Dijk-2010-Intrinsic%20functional%20connectivit.pdf) paper as shown in the table below. These ROIs were made with the `makeROI.sh` bash script that you can try out for making your own ROIs of a given size and shape (sphere or cube) from MNI coordinates, which is the default reference space. </br>
 
 ![roitable](images/practical_rsfc-roi-coords.png)
- <br>
-
+ 
+<br>
+<br>
 
 **Step 2: Nuisance regression**
 * we'll start here during class
-* `mkdir nuisanceRegression`
-* use `fslmeants` to make timeseries plots for Nuisance ROIs, from `rsOut` directory:
-    * example for global: `fslmeants -i sub-001_func-reg.nii.gz -o nuisanceRegression/global_ts.txt -m ../ROIs/global.nii.gz`
-* use `fsl_tsplot` to plot them together for comparison
-    * from nuisanceRegression directory: `fsl_tsplot -i global_ts.txt,latvent_ts.txt,wmroi_ts.txt -a global,csf,wm -o nuisanceROIs`
-* use `paste` to stitch together columns of nuisance BOLD and 6 motion parameter regressors, from nuisanceRegression directory: `paste ../preproc_affine.feat/mc/prefiltered_func_data_mcf.par global_ts.txt wmroi_ts.txt latvent_ts.txt >> nuisance_ts.txt`
-* use AFNI's `3dTproject` to run nuisance regression with nuisance BOLD and motion regressors enterered simultaneously with bandpass regressors: `3dTproject -input sub-001_func-reg.nii.gz -prefix sub-001_func-reg-bp-resid.nii.gz -mask ../ROIs/mask_mni.nii.gz -bandpass .008 .08 -ort nuisanceRegression/nuisance_ts.txt -verb`
-    * see what changed by compare timeseries data before and after nuisance regression: `fsleyes sub-001_func-reg.nii.gz sub-001_func-reg-bp-resid.nii.gz`
+    * first let us: open our prepared functional data and ROIs for visual inspection and review our goals with nuisance regression
+* extract timeseries data for nuisance regression
+    * use `fslmeants` to make timeseries plots for Nuisance ROIs, from `rsOut` directory:
+        * example for global: `fslmeants -i sub-001_func-reg.nii.gz -o nuisanceRegression/global_ts.txt -m ../ROIs/global.nii.gz`
+    * use `fsl_tsplot` to plot them together for comparison
+        * from nuisanceRegression directory: `fsl_tsplot -i global_ts.txt,latvent_ts.txt,wmroi_ts.txt -a global,csf,wm -o nuisanceROIs`
+    * use `paste` to stitch together columns of nuisance BOLD and 6 motion parameter regressors, from nuisanceRegression directory: `paste ../preproc_affine.feat/mc/prefiltered_func_data_mcf.par global_ts.txt wmroi_ts.txt latvent_ts.txt >> nuisance_ts.txt`
+* run nuisnace regression
+    * use AFNI's `3dTproject` to run nuisance regression with nuisance BOLD and motion regressors enterered simultaneously with bandpass regressors: `3dTproject -input sub-001_func-reg.nii.gz -prefix sub-001_func-reg-bp-resid.nii.gz -mask ../ROIs/mask_mni.nii.gz -bandpass .008 .08 -ort nuisanceRegression/nuisance_ts.txt -verb`
+        * see what changed by compare timeseries data before and after nuisance regression: `fsleyes sub-001_func-reg.nii.gz sub-001_func-reg-bp-resid.nii.gz`
 
 
- <br>
-
+<br>
+<br>
 
 **Step 3: Seed-to-brain correlation maps**
 * extract residual (preprocessed) timeseries from the left motor cortex ROI, from the `rsOut` directory: `fslmeants -i sub-001_func-reg-bp-resid.nii.gz -o seedFC/lmot_resid_ts.txt -m ../ROIs/lmot.nii.gz`
@@ -84,9 +91,8 @@ We will download new data that includes resting state BOLD data from one partici
         * what other regions have a timeseries correlated with the seed?
     * replicate steps with the left visual ROI
 
-
- <br>
-
+<br>
+<br>
 
 **Step 4: ROI-to-ROI correlation matrix**
 * use the steps shown above to make residual timeseries files for the left and right motor cortex ROIs, left and right visual cortex ROIs, and the global mask ROI, and place them all in the `seedFC` directory
@@ -97,6 +103,18 @@ We will download new data that includes resting state BOLD data from one partici
     * at terminal: `Rscript plot_roicorr.R`
     * the result should a `.png` file named `roicorr_heatmap.png` that looks like below:
 ![roicorrmat](images/practical_rsfc-roicorr_heatmap.png)
+
+<br>
+<br>
+
+**Discussion questions:**
+* is it surprising that the correlation of each ROI of interest is 0 with the global signal?
+* compare the within-system functional connectivity (fc) of the motor and visual systems
+* how does within and between system fc compare with expectations? which are more affected by the global signal used in nuisance regression?
+* how would we do group analyses with the seed-maps and ROI-to-ROI correlations?
+
+
+
 
 
 
