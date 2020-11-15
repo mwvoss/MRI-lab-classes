@@ -70,6 +70,7 @@ We will download new data that includes resting state BOLD data from one partici
 * we'll start here during class
     * first let us: open our prepared functional data and ROIs for visual inspection and review our goals with nuisance regression
     * move yourself to where the data are for easier loading in fsleyes: `cd /fmriLab/restingState/derivatives/rsOut`
+    * open our prepped functional image: `sub-001_func-reg.nii.gz`
 * extract timeseries data for nuisance regression
     * use `fslmeants` to make timeseries plots for Nuisance ROIs, from `rsOut` directory:
         * example for global: `fslmeants -i sub-001_func-reg.nii.gz -o nuisanceRegression/global_ts.txt -m ../ROIs/global.nii.gz`
