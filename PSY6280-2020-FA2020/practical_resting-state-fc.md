@@ -67,26 +67,31 @@ We will download new data that includes resting state BOLD data from one partici
 <br>
 <br>
 
-**Step 2: Nuisance regression**
+**Step 1: Nuisance regression**
 * we'll start here during class
-    * first let us: open our prepared functional data and ROIs for visual inspection and review our goals with nuisance regression
-    * move yourself to where the data are for easier loading in fsleyes: `cd /fmriLab/restingState/derivatives/rsOut`
-    * open our prepped functional image: `sub-001_func-reg.nii.gz`
+    * **_first let us_**: open our prepared functional data and ROIs for visual inspection and review our goals with nuisance regression
+    * open our functional data in `fsleyes`: 
+        * `cd /fmriLab/restingState/derivatives/rsOut`
+        * `fsleyes sub-001_func-reg.nii.gz`
 * extract timeseries data for nuisance regression
-    * use `fslmeants` to make timeseries plots for Nuisance ROIs, from `rsOut` directory:
+    * use `fslmeants` to make timeseries plots for Nuisance ROIs:
+        * in the terminal, you should be in the `rsOut directory`
         * example for global: `fslmeants -i sub-001_func-reg.nii.gz -o nuisanceRegression/global_ts.txt -m ../ROIs/global.nii.gz`
-    * use `fsl_tsplot` to plot them together for comparison
-        * from nuisanceRegression directory: `fsl_tsplot -i global_ts.txt,latvent_ts.txt,wmroi_ts.txt -a global,csf,wm -o nuisanceROIs`
-    * use `paste` to stitch together columns of nuisance BOLD and 6 motion parameter regressors, from nuisanceRegression directory: `paste ../preproc_affine.feat/mc/prefiltered_func_data_mcf.par global_ts.txt wmroi_ts.txt latvent_ts.txt >> nuisance_ts.txt`
-* run nuisnace regression
-    * use AFNI's `3dTproject` to run nuisance regression with nuisance BOLD and motion regressors enterered simultaneously with bandpass regressors: `3dTproject -input sub-001_func-reg.nii.gz -prefix sub-001_func-reg-bp-resid.nii.gz -mask ../ROIs/mask_mni.nii.gz -bandpass .008 .08 -ort nuisanceRegression/nuisance_ts.txt -verb`
-        * see what changed by compare timeseries data before and after nuisance regression: `fsleyes sub-001_func-reg.nii.gz sub-001_func-reg-bp-resid.nii.gz`
+        * use `fslmeants` to create timeseries for the `latvent` ROI, and name your text file `latvent_ts.txt`; repeat for the `wmroi` and name text file `wmroi_ts.txt`
+    * use `fsl_tsplot` to plot the timeseries data from these files together for comparison:
+        * paste or type to terminal: `fsl_tsplot -i nuisanceRegression/global_ts.txt,nuisanceRegression/latvent_ts.txt,nuisanceRegression/wmroi_ts.txt -a global,csf,wm -o nuisanceRegression/nuisanceROIs_tsplot`
+    * use `paste` to stitch together columns of nuisance BOLD and 6 motion parameter regressors, from nuisanceRegression directory: `paste preproc_affine.feat/mc/prefiltered_func_data_mcf.par nuisanceRegression/global_ts.txt nuisanceRegression/wmroi_ts.txt nuisanceRegression/latvent_ts.txt > nuisanceRegression/nuisance_ts_model.txt`
+* run nuisnace regression with our nuisance_ts_model as predictors of observed bold data
+    * use [AFNI's `3dTproject`](https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTproject.html) to run nuisance regression with nuisance BOLD and motion regressors enterered **_simultaneously_** with regressors that carry out temporal filtering. `3dTproject` also provides options for including regressors identifying volumes to be "censored" (or scrubbed) in your timeseries.
+    * paste or type to terminal: `3dTproject -input sub-001_func-reg.nii.gz -prefix sub-001_func-reg-bp-resid.nii.gz -mask ../ROIs/mask_mni.nii.gz -bandpass .008 .08 -ort nuisanceRegression/nuisance_ts.txt`
+        * see what changed by compare timeseries data before and after nuisance regression 
+        * `fsleyes sub-001_func-reg.nii.gz sub-001_func-reg-bp-resid.nii.gz`
 
 
 <br>
 <br>
 
-**Step 3: Seed-to-brain correlation maps**
+**Step 2: Seed-to-brain correlation maps**
 * extract residual (preprocessed) timeseries from the left motor cortex ROI, from the `rsOut` directory: `fslmeants -i sub-001_func-reg-bp-resid.nii.gz -o seedFC/lmot_resid_ts.txt -m ../ROIs/lmot.nii.gz`
 * use [AFNI's `3dTcorr1D` tool](https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcorr1D.html) to make a seedmap: 
     * from `rsOut`: `3dTcorr1D -prefix seedFC/lmot_corrmap.nii.gz -pearson sub-001_func-reg-bp-resid.nii.gz seedFC/lmot_resid_ts.txt`
@@ -102,7 +107,7 @@ We will download new data that includes resting state BOLD data from one partici
 <br>
 <br>
 
-**Step 4: ROI-to-ROI correlation matrix**
+**Step 3: ROI-to-ROI correlation matrix**
 * use the steps shown above to make residual timeseries files for the left and right motor cortex ROIs, left and right visual cortex ROIs, and the global mask ROI, and place them all in the `seedFC` directory
 * change directories to where your residual timeseries data are: `cd seedFC`
 * use `paste` to make a text tile with all the timeseries data entered as columns: 
