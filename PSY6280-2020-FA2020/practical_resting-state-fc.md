@@ -92,14 +92,16 @@ We will download new data that includes resting state BOLD data from one partici
 <br>
 
 **Step 2: Seed-to-brain correlation maps**
-* extract residual (preprocessed) timeseries from the left motor cortex ROI, from the `rsOut` directory: `fslmeants -i sub-001_func-reg-bp-resid.nii.gz -o seedFC/lmot_resid_ts.txt -m ../ROIs/lmot.nii.gz`
-* use [AFNI's `3dTcorr1D` tool](https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcorr1D.html) to make a seedmap: 
-    * from `rsOut`: `3dTcorr1D -prefix seedFC/lmot_corrmap.nii.gz -pearson sub-001_func-reg-bp-resid.nii.gz seedFC/lmot_resid_ts.txt`
+* extract residual (preprocessed) timeseries from the left motor cortex ROI
+    * in the terminal, you should be in the `rsOut directory`
+    *  `fslmeants -i sub-001_func-reg-bp-resid.nii.gz -o seedFC/lmot_resid_ts.txt -m ../ROIs/lmot.nii.gz`
+* use [AFNI's `3dTcorr1D` tool](https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTcorr1D.html) to make a functional connectivity seed-to-brain map: 
+    * paste or type to terminal: `3dTcorr1D -prefix seedFC/lmot_corrmap.nii.gz -pearson sub-001_func-reg-bp-resid.nii.gz seedFC/lmot_resid_ts.txt`
     * view with `fsleyes`
         * these are pearson r correlations: view histogram, what is range?
             * note when doing group analyses, it's often helpful to transform your pearson r's to Fisher's r
             * this is an option in the `3dTcorr1D` function
-        * threshold the correlation map, is the seed correlated most strongly with itself?
+        * threshold the correlation map, sanity check: is the seed correlated most strongly with itself?
         * what other regions have a timeseries correlated with the seed?
     * replicate steps with the left visual ROI; below is view of my result for the left visual cortex seed, thresholded at r >.50
     ![roimap](images/practical_rsfc-roi-lvis.png)
@@ -108,10 +110,10 @@ We will download new data that includes resting state BOLD data from one partici
 <br>
 
 **Step 3: ROI-to-ROI correlation matrix**
-* use the steps shown above to make residual timeseries files for the left and right motor cortex ROIs, left and right visual cortex ROIs, and the global mask ROI, and place them all in the `seedFC` directory
+* use the steps shown above to make residual timeseries files for the right motor cortex and visual cortex ROIs, and the global mask ROI, and place them all in the `seedFC` directory
 * change directories to where your residual timeseries data are: `cd seedFC`
 * use `paste` to make a text tile with all the timeseries data entered as columns: 
-    * `paste global_resid_ts.txt lmot_resid_ts.txt rmot_resid_ts.txt lvis_resid_ts.txt rvis_resid_ts.txt >> rois_resid_ts.txt`
+    * `paste global_resid_ts.txt lmot_resid_ts.txt rmot_resid_ts.txt lvis_resid_ts.txt rvis_resid_ts.txt > rois_resid_ts.txt`
 * use supplied `plot_roicorr.R` script to compute correlation matrix and plot as a heat-map
     * at terminal: `Rscript plot_roicorr.R`
     * the result should a `.png` file named `roicorr_heatmap.png` that looks like below:
@@ -124,7 +126,8 @@ We will download new data that includes resting state BOLD data from one partici
 * is it surprising that the correlation of each ROI of interest is 0 with the global signal?
 * compare the within-system functional connectivity (fc) of the motor and visual systems
 * how does within and between system fc compare with expectations? which are more affected by the global signal used in nuisance regression?
-* how would we do group analyses with the seed-maps and ROI-to-ROI correlations?
+* how could we do group analyses with the seed-maps?
+* how could we do group analyses with the ROI-to-ROI correlation matrices?
 
 
 
