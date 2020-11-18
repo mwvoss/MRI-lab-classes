@@ -19,7 +19,7 @@ https://fastx.divms.uiowa.edu:3443/  <br/>
 **Lab data** <br>
 We will download new data that includes resting state BOLD data from one participant:
 * cd to fmriLab: `cd fmriLab`
-* download data: `wget -O restingState.tar.gz https://www.dropbox.com/s/pc8outqs66hf5m7/restingState.tar.gz?dl=0 `
+* download data: `wget -O restingState.tar.gz https://www.dropbox.com/s/vqemwf91buhlqrd/restingState.tar.gz?dl=0`
 * unpack: `tar -xvf restingState.tar.gz`
 * clean-up: `rm restingState.tar.gz`
 
