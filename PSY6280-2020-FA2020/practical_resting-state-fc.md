@@ -26,18 +26,18 @@ We will download new data that includes resting state BOLD data from one partici
 <br>
 <br>
 
-**Step 0: Source AFNI**
+**Prerequisite: Source AFNI**
 * [AFNI](https://afni.nimh.nih.gov/) is another image processing software that has handy command line functions
 * see instructions [here](https://github.com/mwvoss/MRI-lab-classes/wiki/Setup-FSL-and-AFNI-in-remote-linux-environment) for setting up access to AFNI on the fastX nodes for general use
 
 <br>
 <br>
 
-**Step 1 (pre-baked): Prepare functional data with preprocessing**
+**Step 0: Prepare functional data with preprocessing (pre-baked in download)**
 * This has been completed for sake of time, but derivatives of the process are avaiable in case you'd like to replicate
 * Move yourself to the derivatives directory where we'll put processed data: 
     * `cd /fmriLab/restingState/derivatives/rsOut`
-* Copy our bold image here for ease to work with and it's clearly labeled as our starting raw image: 
+* Copy unprocessed bold image here for ease to work with and it's clearly labeled as our starting raw image: 
     * `cp ~/fmriLab/restingState/sub-001/func/sub-001_task-rest_bold.nii.gz sub-001_func-raw.nii.gz`
 * Preprocessing:
     * setup preprocessing only using the FEAT GUI, including creation of registration transforms 
@@ -52,14 +52,15 @@ We will download new data that includes resting state BOLD data from one partici
         * `Registration` tab
             * specify skull-stripped anatomical as your high-resolution input
             * specify both transforms as affine 12 DOF
-                * note the result of bbr+non-linear is in the `preproc` directory for comparison
+                * note the result of bbr+non-linear registration is in the `preproc` directory for comparison
         * Hit `Go`
-    * our preprocessed data is `preproc.feat/filtered_func_data.nii.gz`
-* Use registration transforms to warp our preprocessed data into MNI space
-    * Skills and tools from this [lab](https://github.com/mwvoss/MRI-lab-classes/blob/master/PSY6280-2020-FA2020/practical_spatial-registration.md)
-    * `flirt -in preproc_affine.feat/filtered_func_data.nii.gz -ref ${FSLDIR}/data/standard/MNI152_T1_2mm_brain.nii.gz -out sub-001_func-reg.nii.gz -applyxfm -init preproc_affine.feat/reg/example_func2standard.mat`
-* We now have a functional nifti image that has been preprocessed in the spatial dimension and only needs further filtering in the temporal dimension
-* You also have an `ROIs` directory which contains left and right motor and visual ROIs from the [Van Dijk et al](https://github.com/mwvoss/MRI-lab-classes/blob/master/PSY6280-2020-FA2020/pdfs/Van%20Dijk-2010-Intrinsic%20functional%20connectivit.pdf) paper as shown in the table below. These ROIs were made with the `makeROI.sh` bash script that you can try out for making your own ROIs of a given size and shape (sphere or cube) from MNI coordinates, which is the default reference space. </br>
+    * our preprocessed data is `preproc_affine.feat/filtered_func_data.nii.gz`
+* Use registration transforms generated in last step to warp our preprocessed bold data into MNI space
+    * Step usees skills and tools from this [lab](https://github.com/mwvoss/MRI-lab-classes/blob/master/PSY6280-2020-FA2020/practical_spatial-registration.md)
+    * Affine spatial normalization of a functional bold image: `flirt -in preproc_affine.feat/filtered_func_data.nii.gz -ref ${FSLDIR}/data/standard/MNI152_T1_2mm_brain.nii.gz -out sub-001_func-reg.nii.gz -applyxfm -init preproc_affine.feat/reg/example_func2standard.mat`
+* We now have an fMR image that has been preprocessed in the spatial dimension and only needs further filtering in the temporal dimension
+* In your downloaded data, you also have an `ROIs` directory which contains left and right motor and visual ROIs from the [Van Dijk et al](https://github.com/mwvoss/MRI-lab-classes/blob/master/PSY6280-2020-FA2020/pdfs/Van%20Dijk-2010-Intrinsic%20functional%20connectivit.pdf) paper as shown in the table below. 
+    * These ROIs were made with the `makeROI.sh` bash script that you can try out for making your own ROIs of a given size and shape (sphere or cube) from MNI coordinates, which is the default reference space. To try the script, move yourself in the terminal to the ROIs folder and type `bash makeROI.sh` to see usage. </br>
 
 ![roitable](images/practical_rsfc-roi-coords.png)
  
