@@ -36,7 +36,7 @@ We will download new data that includes resting state BOLD data from one partici
 **Step 0: Prepare functional data with preprocessing (pre-baked in download)**
 * This has been completed for sake of time, but derivatives of the process are avaiable in case you'd like to replicate
 * Move yourself to the derivatives directory where we'll put processed data: 
-    * `cd /fmriLab/restingState/derivatives/rsOut`
+    * `cd ~/fmriLab/restingState/derivatives/rsOut`
 * Copy unprocessed bold image here for ease to work with and it's clearly labeled as our starting raw image: 
     * `cp ~/fmriLab/restingState/sub-001/func/sub-001_task-rest_bold.nii.gz sub-001_func-raw.nii.gz`
 * Preprocessing:
@@ -83,7 +83,7 @@ We will download new data that includes resting state BOLD data from one partici
     * use `paste` to stitch together columns of nuisance BOLD and 6 motion parameter regressors, from nuisanceRegression directory: `paste preproc_affine.feat/mc/prefiltered_func_data_mcf.par nuisanceRegression/global_ts.txt nuisanceRegression/wmroi_ts.txt nuisanceRegression/latvent_ts.txt > nuisanceRegression/nuisance_ts_model.txt`
 * run nuisnace regression with our nuisance_ts_model as predictors of observed bold data
     * use [AFNI's `3dTproject`](https://afni.nimh.nih.gov/pub/dist/doc/program_help/3dTproject.html) to run nuisance regression with nuisance BOLD and motion regressors enterered **_simultaneously_** with regressors that carry out temporal filtering. `3dTproject` also provides options for including regressors identifying volumes to be "censored" (or scrubbed) in your timeseries.
-    * paste or type to terminal: `3dTproject -input sub-001_func-reg.nii.gz -prefix sub-001_func-reg-bp-resid.nii.gz -mask ../ROIs/mask_mni.nii.gz -bandpass .008 .08 -ort nuisanceRegression/nuisance_ts.txt`
+    * paste or type to terminal: `3dTproject -input sub-001_func-reg.nii.gz -prefix sub-001_func-reg-bp-resid.nii.gz -mask ../ROIs/mask_mni.nii.gz -bandpass .008 .08 -ort nuisanceRegression/nuisance_ts_model.txt`
         * see what changed by compare timeseries data before and after nuisance regression 
         * `fsleyes sub-001_func-reg.nii.gz sub-001_func-reg-bp-resid.nii.gz`
 
